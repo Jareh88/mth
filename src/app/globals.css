@@ -1,6 +1,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  width: 100%; /* vw includes width of vertical scrollbar */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,6 +17,7 @@
 html,
 body {
   max-width: 100vw;
+  min-height: 100vh;
   overflow-x: hidden;
 }
 
@@ -22,6 +27,24 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  padding-right: 0 !important;
+}
+
+.background-image-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: -30%;
+  left: 0;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.background-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 * {
@@ -35,8 +58,59 @@ a {
   text-decoration: none;
 }
 
+.inline-list li {
+  margin-left: 42px;
+}
+
+.header-link-em {
+  text-transform: none;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+}
+
+.profile-img {
+  border-radius: 100%;
+}
+
+.flex-row {
+  display: flex;
+  align-items: center;
+}
+
+.therapist-card {
+  transition: all 0.2s ease-in-out !important;
+}
+
+.therapist-card:not(:has(.no-parent-hover:hover)):hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  background-color: #e9f3fb !important;
+}
+
+.therapist-card:not(:has(.no-parent-hover:hover)):hover .view-profile-btn {
+  background-color: #ff9900;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse {
+  animation: pulse 400ms 500ms ease-in-out;
+}
+
+.pulse-delay {
+  animation: pulse 300ms 900ms ease-in-out;
 }

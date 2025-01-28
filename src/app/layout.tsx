@@ -1,15 +1,28 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "./responsive.css";
+import { Roboto, Rubik } from "next/font/google";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "@/theme";
+import CssBaseline from "@mui/material/CssBaseline";
+import { Box } from "@mui/material";
+import { Header } from "@/components/HeaderComponent";
+import Image from "next/image";
+import { relative } from "path";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const roboto = Roboto({
+  weight: ["300", "400", "500", "700"],
   subsets: ["latin"],
+  display: "swap",
+  variable: "--font-roboto",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const rubik = Rubik({
+  weight: ["300", "400", "500", "700"],
   subsets: ["latin"],
+  display: "swap",
+  variable: "--font-rubik",
 });
 
 export const metadata: Metadata = {
@@ -24,8 +37,34 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <body className={`${rubik.variable} ${roboto.variable}`}>
+        <AppRouterCacheProvider>
+          <CssBaseline />
+          <ThemeProvider theme={theme}>
+            <Box
+              sx={{
+                bgcolor: "background.default",
+                minHeight: "100vh",
+                margin: 0,
+                padding: 0,
+              }}
+            >
+              <div className="background-image-container">
+                <Image
+                  src="/assets/MTH - SVG transparent logo only.svg"
+                  alt="background-logo"
+                  fill
+                  priority
+                  className="background-image"
+                />
+              </div>
+              <Box sx={{ position: "relative", zIndex: 1 }}>
+                <Header />
+                {children}
+              </Box>
+            </Box>
+          </ThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );
