@@ -214,6 +214,7 @@ const theme = createTheme({
           },
         },
         listbox: {
+          backgroundColor: "#fff",
           "& .MuiAutocomplete-option.Mui-focused": {
             backgroundColor: "#07a0c3",
           },
@@ -281,6 +282,19 @@ const theme = createTheme({
           },
           "&:hover:not(.MuiDisabled)[aria-expanded='false']": {
             backgroundColor: "transparent",
+          },
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          "& .MuiMenu-list": {
+            backgroundColor: "#fff",
+          },
+          "& .MuiMenuItem-root:hover": {
+            backgroundColor: "#07a0c3",
+            color: "#fff",
           },
         },
       },
