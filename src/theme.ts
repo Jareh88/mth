@@ -24,7 +24,7 @@ const theme = createTheme({
       secondary: "#fff",
     },
     info: {
-      main: "#0288d1",
+      main: "#07a0c3",
     },
   },
   spacing: 8,
@@ -125,7 +125,7 @@ const theme = createTheme({
             color: "#0A3449",
           },
           "&.header-link--login": {
-            backgroundColor: "#0288d1",
+            backgroundColor: "#07a0c3",
             color: "#fff",
             letterSpacing: "2px",
           },
@@ -202,12 +202,28 @@ const theme = createTheme({
           // "& .MuiInput-root .MuiInput-input": {
           //   padding: "20px",
           // },
+          "& .MuiAutocomplete-clearIndicator:hover": {
+            backgroundColor: "#ff9900",
+            color: "#fff",
+          },
         },
         option: {
           backgroundColor: "#fff",
           "&:hover": {
             color: "#fff",
           },
+        },
+        listbox: {
+          "& .MuiAutocomplete-option.Mui-focused": {
+            backgroundColor: "#07a0c3",
+          },
+          "& .MuiAutocomplete-option[aria-selected='true']": {
+            backgroundColor: "#0A3449",
+            color: "#fff",
+          },
+          // "& .MuiAutocomplete-option[aria-selected='true'].Mui-focused": {
+          //   backgroundColor: "#ff9900",
+          // },
         },
       },
     },
@@ -222,6 +238,9 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           color: "#0A3449",
+          "&.Mui-focused": {
+            color: "#0A3449",
+          },
         },
       },
     },
@@ -236,6 +255,33 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: "#fff",
+        },
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#0A3449",
+          color: "#fff",
+          "& .MuiChip-deleteIcon": {
+            color: "#fff",
+          },
+          "& .MuiChip-deleteIcon:hover": {
+            color: "#ff9900",
+          },
+        },
+      },
+    },
+    MuiAccordionSummary: {
+      styleOverrides: {
+        root: {
+          borderRadius: "4px",
+          "&:hover:not(.MuiDisabled)": {
+            backgroundColor: "#e5f3fb",
+          },
+          "&:hover:not(.MuiDisabled)[aria-expanded='false']": {
+            backgroundColor: "transparent",
+          },
         },
       },
     },

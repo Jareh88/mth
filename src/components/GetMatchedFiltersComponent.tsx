@@ -7,7 +7,6 @@ export default function GetMatchedFilters() {
   const [open, setOpen] = useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
-    console.log("hit");
     setOpen(newOpen);
   };
 
@@ -27,6 +26,7 @@ export default function GetMatchedFilters() {
             color: "#ff9900",
             cursor: "pointer",
           },
+          borderRadius: "4px",
         }}
         onClick={toggleDrawer(true)}
       >

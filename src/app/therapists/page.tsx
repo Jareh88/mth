@@ -3,14 +3,29 @@
 import Grid from "@mui/material/Grid2";
 import placeholderTherapists from "@/helpers/placeholderTherapists";
 import TherapistCard from "@/components/TherapistCardComponent";
-import { Container, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import GetMatchedFilters from "@/components/GetMatchedFiltersComponent";
 
 export default function Therapists() {
   return (
     <Container>
       <Grid container spacing={2} mb={2}>
-        <Grid size={2}></Grid>
+        <Grid size={2} sx={{ display: "flex", alignItems: "center" }}>
+          <Box
+            sx={{
+              width: "100%",
+              py: 2,
+              px: 3,
+              backgroundColor: "#07a0c3",
+              color: "#fff",
+              borderRadius: "20px",
+            }}
+          >
+            <Typography variant="h5" align="center">
+              How to choose a therapist
+            </Typography>
+          </Box>
+        </Grid>
         <Grid size={8}>
           <Typography
             variant="h1"

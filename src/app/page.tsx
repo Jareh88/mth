@@ -29,12 +29,16 @@ export default function Home() {
           </Typography>
           <Typography
             variant="h2"
+            component="h2"
             color="primary.dark"
-            sx={{ textAlign: "center", mb: 2 }}
+            sx={{ textAlign: "center", mb: 2, fontSize: "38px" }}
           >
             by men, for men
           </Typography>
-          <Typography variant="body1" sx={{ color: "#fff" }}>
+          <Typography
+            variant="body1"
+            sx={{ color: "#fff", fontSize: "1.27rem" }}
+          >
             We are dedicated to connecting men with experienced, accredited male
             therapists who truly understand the nuances of men’s mental health
             and are committed to providing high-quality, personalised care.

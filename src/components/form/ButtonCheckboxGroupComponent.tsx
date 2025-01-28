@@ -4,30 +4,31 @@ import LaptopOutlinedIcon from "@mui/icons-material/LaptopOutlined";
 import ChairOutlinedIcon from "@mui/icons-material/ChairOutlined";
 import PhoneIcon from "@mui/icons-material/Phone";
 import HouseIcon from "@mui/icons-material/House";
+import Grid from "@mui/material/Grid2";
 
 const CheckboxButton = ({
   handleButtonClick,
   selected,
   startIcon,
-  key,
+  id,
   children,
 }) => {
-  const isSelected = selected[key];
+  const isSelected = selected[id];
 
   return (
     <Button
       variant="outlined"
       size="large"
       startIcon={startIcon}
-      onClick={() => handleButtonClick(key)}
+      onClick={() => handleButtonClick(id)}
       sx={{
-        width: "50%",
+        width: "100%",
         mr: 1,
         p: 2,
         ...(isSelected && {
           backgroundColor: "rgba(2, 136, 209, 0.2)",
           fontWeight: 700,
-          borderColor: "#0288d1",
+          borderColor: "#07a0c3",
           "& p": {
             fontWeight: 700,
           },
@@ -46,46 +47,54 @@ export default function ButtonCheckboxGroup() {
     3: false,
     4: false,
   });
-  console.log(selected);
-  const handleButtonClick = (key) => {
-    const toggle = selected[key];
-    setSelected({ ...selected, [key]: !toggle });
+
+  const handleButtonClick = (id) => {
+    const toggle = selected[id];
+    setSelected({ ...selected, [id]: !toggle });
   };
 
   return (
-    <>
-      <CheckboxButton
-        key={1}
-        handleButtonClick={() => handleButtonClick(1)}
-        selected={selected}
-        startIcon={<ChairOutlinedIcon />}
-      >
-        In Person
-      </CheckboxButton>
-      <CheckboxButton
-        key={2}
-        handleButtonClick={() => handleButtonClick(2)}
-        selected={selected}
-        startIcon={<LaptopOutlinedIcon />}
-      >
-        Online
-      </CheckboxButton>
-      <CheckboxButton
-        key={3}
-        handleButtonClick={() => handleButtonClick(3)}
-        selected={selected}
-        startIcon={<PhoneIcon />}
-      >
-        Phone
-      </CheckboxButton>
-      <CheckboxButton
-        key={4}
-        handleButtonClick={() => handleButtonClick(4)}
-        selected={selected}
-        startIcon={<HouseIcon />}
-      >
-        Home Visits
-      </CheckboxButton>
-    </>
+    <Grid container spacing={1}>
+      <Grid size={3}>
+        <CheckboxButton
+          id={1}
+          handleButtonClick={() => handleButtonClick(1)}
+          selected={selected}
+          startIcon={<ChairOutlinedIcon />}
+        >
+          In Person
+        </CheckboxButton>
+      </Grid>
+      <Grid size={3}>
+        <CheckboxButton
+          id={2}
+          handleButtonClick={() => handleButtonClick(2)}
+          selected={selected}
+          startIcon={<LaptopOutlinedIcon />}
+        >
+          Online
+        </CheckboxButton>
+      </Grid>
+      <Grid size={3}>
+        <CheckboxButton
+          id={3}
+          handleButtonClick={() => handleButtonClick(3)}
+          selected={selected}
+          startIcon={<PhoneIcon />}
+        >
+          Phone
+        </CheckboxButton>
+      </Grid>
+      <Grid size={3}>
+        <CheckboxButton
+          id={4}
+          handleButtonClick={() => handleButtonClick(4)}
+          selected={selected}
+          startIcon={<HouseIcon />}
+        >
+          Home Visits
+        </CheckboxButton>
+      </Grid>
+    </Grid>
   );
 }

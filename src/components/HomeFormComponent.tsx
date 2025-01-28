@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import placeholderOptions from "../helpers/placeholderoptions";
+import placeholderOptions from "../helpers/placeholderSpecialisms";
 import SearchIcon from "@mui/icons-material/Search";
 import LaptopOutlinedIcon from "@mui/icons-material/LaptopOutlined";
 import ChairOutlinedIcon from "@mui/icons-material/ChairOutlined";
@@ -44,7 +44,13 @@ export const HomeForm = () => {
   return (
     <Card
       raised={true}
-      sx={{ bgcolor: "primary.dark", color: "primary.contrastText", p: 6 }}
+      sx={{
+        bgcolor: "primary.dark",
+        color: "primary.contrastText",
+        p: 6,
+        border: "6px solid #ff9900",
+        borderRadius: "16px",
+      }}
     >
       <Box sx={{ width: "100%" }}>
         <Typography
@@ -95,7 +101,7 @@ export const HomeForm = () => {
                   hasClicked && {
                     backgroundColor: "rgba(2, 136, 209, 0.2)",
                     fontWeight: 700,
-                    borderColor: "#0288d1",
+                    borderColor: "#07a0c3",
                     "& p": {
                       fontWeight: 700,
                     },
@@ -115,7 +121,7 @@ export const HomeForm = () => {
                 p: 2,
                 ...(selectedOnline && {
                   backgroundColor: "rgba(2, 136, 209, 0.2)",
-                  borderColor: "#0288d1",
+                  borderColor: "#07a0c3",
                   "& p": {
                     fontWeight: 700,
                   },
