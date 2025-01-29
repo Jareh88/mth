@@ -23,7 +23,8 @@ export default async function Page({
   }
 
   return (
-    <Container>
+    // TODO: put padding on container as default
+    <Container sx={{ py: 10 }}>
       {/* <BreadcrumbComponent parentUrl="/therapists" title={therapist.name} /> */}
       <Link href="/therapists">
         <Typography

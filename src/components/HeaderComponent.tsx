@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button, Container /*, Typography*/ } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-export const Header = () => {
+export const Header = ({ isSticky = false }) => {
   return (
     <Container>
       <Grid
@@ -13,7 +13,7 @@ export const Header = () => {
         spacing={2}
         alignItems="center"
         justifyContent="space-between"
-        sx={{ py: 4, mx: "auto" }}
+        sx={{ py: isSticky ? 1 : 4, mx: "auto" }}
       >
         <Link href="/">
           <Image
@@ -24,11 +24,11 @@ export const Header = () => {
             priority
           />
         </Link>
-        <Link href="/resources">
-          <Button className="header-link" size="medium">
-            Resources
-          </Button>
-        </Link>
+        {/* <Link href="/resources"> */}
+        <Button className="header-link" size="medium">
+          Resources
+        </Button>
+        {/* </Link> */}
         <Link href="/therapists">
           <Button
             variant="contained"
@@ -43,28 +43,28 @@ export const Header = () => {
             {/* </Typography> */}
           </Button>
         </Link>
-        <Link href="/join">
-          <Button className="header-link" size="medium">
-            Join The
-            <br />
-            Directory
-          </Button>
-        </Link>
+        {/* <Link href="/join"> */}
+        <Button className="header-link" size="medium">
+          Join The
+          <br />
+          Directory
+        </Button>
+        {/* </Link> */}
         <Link href="/about">
           <Button className="header-link" size="medium">
             About MTH
           </Button>
         </Link>
-        <Link href="/therapists">
-          <Button className="header-link header-link--icon" size="large">
-            <SearchIcon />
-          </Button>
-        </Link>
-        <Link href="/log-in">
-          <Button className="header-link header-link--login" size="large">
-            Login
-          </Button>
-        </Link>
+        {/* <Link href="/therapists"> */}
+        <Button className="header-link header-link--icon" size="large">
+          <SearchIcon />
+        </Button>
+        {/* </Link> */}
+        {/* <Link href="/log-in"> */}
+        <Button className="header-link header-link--login" size="large">
+          Login
+        </Button>
+        {/* </Link> */}
         <NavMenu />
       </Grid>
     </Container>

@@ -5,26 +5,32 @@ import placeholderTherapists from "@/helpers/placeholderTherapists";
 import TherapistCard from "@/components/TherapistCardComponent";
 import { Box, Container, Typography } from "@mui/material";
 import GetMatchedFilters from "@/components/GetMatchedFiltersComponent";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+import HowToComponent from "@/components/HowToComponent";
 
 export default function Therapists() {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleUpdateParams = () => {
+    const params = new URLSearchParams(searchParams);
+    params.delete("openFilter");
+
+    // Navigate with new search params
+    router.push(`${pathname}?${params.toString()}`);
+  };
+
+  useEffect(() => {
+    handleUpdateParams();
+  }, []);
+
   return (
-    <Container>
+    <Container sx={{ py: 10 }}>
       <Grid container spacing={2} mb={2}>
         <Grid size={2} sx={{ display: "flex", alignItems: "center" }}>
-          <Box
-            sx={{
-              width: "100%",
-              py: 2,
-              px: 3,
-              backgroundColor: "#07a0c3",
-              color: "#fff",
-              borderRadius: "20px",
-            }}
-          >
-            <Typography variant="h5" align="center">
-              How to choose a therapist
-            </Typography>
-          </Box>
+          <HowToComponent />
         </Grid>
         <Grid size={8}>
           <Typography

@@ -1,10 +1,19 @@
 import { Box, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ExtensionIcon from "@mui/icons-material/Extension";
 import { FilterDrawer } from "./FilterDrawerComponent";
+import { useSearchParams } from "next/navigation";
 
 export default function GetMatchedFilters() {
   const [open, setOpen] = useState(false);
+  const searchParams = useSearchParams(); //=== "/therapists";
+  const isForced = searchParams.get("openFilter");
+
+  useEffect(() => {
+    if (isForced) {
+      setOpen(isForced);
+    }
+  }, []);
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
