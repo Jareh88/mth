@@ -9,7 +9,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { Box } from "@mui/material";
 import { Header } from "@/components/HeaderComponent";
 import Image from "next/image";
-import { relative } from "path";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],

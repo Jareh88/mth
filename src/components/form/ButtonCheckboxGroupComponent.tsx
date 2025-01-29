@@ -1,7 +1,22 @@
 import { Button, Typography } from "@mui/material";
-import { useState } from "react";
+import React, { ReactElement, useState } from "react";
 
 import Grid from "@mui/material/Grid2";
+import { CheckboxButtonOptions } from "@/lib/types";
+
+type CheckboxButtonProps = {
+  handleButtonClick: (id: number) => void;
+  selected: {
+    number: boolean;
+  }[];
+  startIcon: ReactElement;
+  id: number;
+  children: React.ReactNode;
+};
+
+type ButtonCheckboxGroup = {
+  options: CheckboxButtonOptions;
+};
 
 const CheckboxButton = ({
   handleButtonClick,
@@ -9,7 +24,7 @@ const CheckboxButton = ({
   startIcon,
   id,
   children,
-}) => {
+}: CheckboxButtonProps) => {
   const isSelected = selected[id];
 
   return (
@@ -37,7 +52,7 @@ const CheckboxButton = ({
   );
 };
 
-export default function ButtonCheckboxGroup({ options }) {
+export default function ButtonCheckboxGroup({ options }: ButtonCheckboxGroup) {
   let initialState = {};
 
   options.forEach((option, index) => {

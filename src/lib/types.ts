@@ -1,3 +1,5 @@
+import React from "react";
+
 export type TherapistProps = {
   id: number;
   slug: string;
@@ -22,3 +24,8 @@ export type TherapistProps = {
   biography: string;
   how_we_start: string;
 };
+
+export type CheckboxButtonOptions = {
+  icon: React.ReactNode;
+  label: string;
+}[];

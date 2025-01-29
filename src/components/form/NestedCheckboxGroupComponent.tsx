@@ -2,15 +2,9 @@ import { Box, Checkbox, FormControlLabel } from "@mui/material";
 import { useState } from "react";
 import placeholderTherapyTypes from "@/helpers/placeholderTherapyTypes";
 
-function NestedCheckboxGroupChildren({
-  options,
-  checked,
-  setChecked,
-  handleChange,
-}) {
+function NestedCheckboxGroupChildren({ options, checked, handleChange }) {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", ml: 3 }}>
-      {console.log(options)}
       {options.map((child, index) => {
         return (
           <FormControlLabel
@@ -28,7 +22,6 @@ function NestedCheckboxGroupChildren({
 
 export default function NestedCheckboxGroup() {
   const initialState = {};
-  // console.log(placeholderTherapyTypes);
   placeholderTherapyTypes.forEach((therapyType) => {
     initialState[therapyType.parent.id] = false;
     if (therapyType.children && therapyType.children.length > 0) {
@@ -77,7 +70,6 @@ export default function NestedCheckboxGroup() {
               <NestedCheckboxGroupChildren
                 options={therapyType.children}
                 checked={checked}
-                setChecked={setChecked}
                 handleChange={(e) => {
                   handleChangeChild(e, therapyType);
                 }}

@@ -108,9 +108,9 @@ a {
 }
 
 .pulse {
-  animation: pulse 400ms 500ms ease-in-out;
+  animation: pulse 400ms 2500ms ease-in-out;
 }
 
 .pulse-delay {
-  animation: pulse 300ms 900ms ease-in-out;
+  animation: pulse 300ms 2900ms ease-in-out;
 }

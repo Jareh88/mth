@@ -114,6 +114,7 @@ export default function TherapistProfile({ therapist }: TherapistProfileProps) {
                 variant="contained"
                 size="large"
                 startIcon={<ShareIcon />}
+                sx={{ py: 1.5 }}
               >
                 Share
               </Button>
