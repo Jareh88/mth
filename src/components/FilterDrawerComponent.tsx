@@ -84,7 +84,7 @@ export const FilterDrawer = ({ onClick, open }: FilterDrawerProps) => {
           Get Matched
         </Typography>
         <Typography variant="h6">
-          Your journey to finding the perfect match starts here.
+          Use our filter tools to narrow down your options
         </Typography>
         <Button variant="text" endIcon={<Close />} onClick={onClick}>
           Close

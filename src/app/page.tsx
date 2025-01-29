@@ -10,6 +10,8 @@ import Link from "next/link";
 import Groups3OutlinedIcon from "@mui/icons-material/Groups3Outlined";
 import VoiceOverOffOutlinedIcon from "@mui/icons-material/VoiceOverOffOutlined";
 import HandshakeOutlinedIcon from "@mui/icons-material/HandshakeOutlined";
+import PsychologyAltOutlinedIcon from "@mui/icons-material/PsychologyAltOutlined";
+import QuestionAnswerOutlinedIcon from "@mui/icons-material/QuestionAnswerOutlined";
 
 export default function Home() {
   return (
@@ -63,9 +65,10 @@ export default function Home() {
               textAlign: "center",
               // textTransform: "uppercase",
               color: "#ff9900",
+              textTransform: "uppercase",
             }}
           >
-            MEN&apos;S therapy hub
+            Men&apos;S Therapy Hub
           </Typography>
           <Typography
             variant="h2"
@@ -73,7 +76,7 @@ export default function Home() {
             color="primary.dark"
             sx={{ textAlign: "center", mb: 4, fontSize: "38px" }}
           >
-            Mission Statement
+            Helping you find the help you need.
           </Typography>
           <Grid container spacing={2}>
             <Grid size={4}>
@@ -99,7 +102,7 @@ export default function Home() {
                   mb={1}
                   // sx={{ fontSize: "24px" }}
                 >
-                  Men are underrepresented
+                  Why choose a male therapist?
                 </Typography>
                 <DividerComponent width="30%" color="#fff" />
               </Box>
@@ -108,14 +111,23 @@ export default function Home() {
                 <Typography
                   variant="body1"
                   color="text.secondary"
-                  sx={{ fontSize: "1.27rem", mt: 3 }}
+                  sx={{ fontSize: "1.27rem", mt: 3, mb: 4 }}
                 >
-                  Men were once at the forefront of psychotherapy, yet today
-                  remain vastly underrepresented in the field. Currently, men
-                  make up around a quarter of therapists and less than a third
-                  of therapy clients globally. We hope to help normalise men
-                  being involved in therapy on both sides of the sofa.
+                  For some men, working with a male therapist can make the
+                  difference, helping to create a more relatable, comfortable
+                  space. Here are some reasons this might be the right choice
+                  for you...
                 </Typography>
+                <Box sx={{ display: "flex", justifyContent: "center" }}>
+                  {/* <Link href="/about"> */}
+                  <Button
+                    variant="contained"
+                    sx={{ backgroundColor: "#07a0c3" }}
+                  >
+                    Read more...
+                  </Button>
+                  {/* </Link> */}
+                </Box>
               </Box>
               <Box>{/* CTA */}</Box>
             </Grid>
@@ -130,7 +142,7 @@ export default function Home() {
               >
                 {/* Icon of some kind */}
 
-                <VoiceOverOffOutlinedIcon
+                <PsychologyAltOutlinedIcon
                   sx={{ color: "#fff", fontSize: "6rem" }}
                 />
               </Box>
@@ -144,7 +156,7 @@ export default function Home() {
                   mb={1}
                   // sx={{ fontSize: "24px" }}
                 >
-                  Men feel misunderstood
+                  How to choose a therapist?
                 </Typography>
                 <DividerComponent width="30%" color="#fff" />
               </Box>
@@ -154,15 +166,23 @@ export default function Home() {
                 <Typography
                   variant="body1"
                   color="text.secondary"
-                  sx={{ fontSize: "1.27rem", mt: 3 }}
+                  sx={{ fontSize: "1.27rem", mt: 3, mb: 4 }}
                 >
-                  More men are seeking therapy than ever before, but we also
-                  know that dropout rates for men are exceedingly high. Not
-                  feeling understood by their therapist is one of the key
-                  factors affecting ongoing attendance for men. That’s why our
-                  primary function is helping more men find good quality, male
-                  therapists.
+                  Choosing a therapist can be a daunting task. We’ve developed
+                  our ‘Get Matched’ service to help you find the right
+                  therapist. Still not sure? We’ve come up with some key points
+                  to consider...
                 </Typography>
+                <Box sx={{ display: "flex", justifyContent: "center" }}>
+                  {/* <Link href="/about"> */}
+                  <Button
+                    variant="contained"
+                    sx={{ backgroundColor: "#07a0c3" }}
+                  >
+                    Read more...
+                  </Button>
+                  {/* </Link> */}
+                </Box>
               </Box>
               <Box>{/* CTA */}</Box>
             </Grid>
@@ -177,7 +197,7 @@ export default function Home() {
               >
                 {/* Icon of some kind */}
 
-                <HandshakeOutlinedIcon
+                <QuestionAnswerOutlinedIcon
                   sx={{ color: "#fff", fontSize: "6rem" }}
                 />
               </Box>
@@ -191,7 +211,7 @@ export default function Home() {
                   mb={1}
                   // sx={{ fontSize: "24px" }}
                 >
-                  Men thrive in male-only spaces
+                  What can I get support for?
                 </Typography>
                 <DividerComponent width="30%" color="#fff" />
               </Box>
@@ -200,28 +220,26 @@ export default function Home() {
                 <Typography
                   variant="body1"
                   color="text.secondary"
-                  sx={{ fontSize: "1.27rem", mt: 3 }}
+                  sx={{ fontSize: "1.27rem", mt: 3, mb: 4 }}
                 >
-                  We know that men face unique challenges, including higher
-                  rates of suicide, addiction, and violence. New research shows
-                  that male-led mental health charities and male-only support
-                  groups are showing positive results worldwide, and we’re
-                  committed to building on that momentum. Our mission is
-                  twofold: to encourage more men to engage in therapy, whether
-                  as clients or therapists, and to create a space where men feel
-                  confident accessing meaningful, life-changing conversations
-                  with other men.
+                  Men face a variety of challenges with their mental health.
+                  We’ve created a library to help you navigate through
+                  everything from common issues, symptoms, treatment options and
+                  more...
                 </Typography>
+                <Box sx={{ display: "flex", justifyContent: "center" }}>
+                  {/* <Link href="/about"> */}
+                  <Button
+                    variant="contained"
+                    sx={{ backgroundColor: "#07a0c3" }}
+                  >
+                    Read more...
+                  </Button>
+                  {/* </Link> */}
+                </Box>
               </Box>
             </Grid>
           </Grid>
-        </Box>
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <Link href="/about">
-            <Button variant="contained" sx={{ backgroundColor: "#07a0c3" }}>
-              Find out more...
-            </Button>
-          </Link>
         </Box>
       </Container>
     </>
