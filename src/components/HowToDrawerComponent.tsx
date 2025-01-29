@@ -35,8 +35,8 @@ export const HowToDrawer = ({ onClick, open }: FilterDrawerProps) => {
             ‘Get Matched’ service to help you find the right therapist for you.
           </Typography>
           <Typography variant="body2" mb={2}>
-            If you're still not sure who might be best, here are some key points
-            to consider when making your choice.
+            If you&apos;re still not sure who might be best, here are some key
+            points to consider when making your choice.
           </Typography>
           <Typography>1. Know What You’re Looking For</Typography>
           <Typography variant="body2" mb={2}>
@@ -54,23 +54,28 @@ export const HowToDrawer = ({ onClick, open }: FilterDrawerProps) => {
             someone you feel comfortable with. Here are a few things to think
             about:
           </Typography>
-          <Typography variant="body2" mb={2}>
-            <ul style={{ marginLeft: "24px" }}>
-              <li>
+
+          <ul style={{ marginLeft: "24px", mb: 2 }}>
+            <li>
+              <Typography variant="body2" mb={2}>
                 Personal Comfort: Would you feel more at ease talking to someone
                 online from your own home, or away from home, in-person?
-              </li>
-              <li>
+              </Typography>
+            </li>
+            <li>
+              <Typography variant="body2" mb={2}>
                 Communication Style: Do you prefer someone who is warm and
                 nurturing or more structured and direct?
-              </li>
-              <li>
+              </Typography>
+            </li>
+            <li>
+              <Typography variant="body2" mb={2}>
                 Cultural Understanding: Would you benefit from working with a
                 therapist who shares or understands your cultural background or
                 life experiences?
-              </li>
-            </ul>
-          </Typography>
+              </Typography>
+            </li>
+          </ul>
           <Typography>3. Review Credentials and Accreditation</Typography>
           <Typography variant="body2" mb={2}>
             In the UK, therapists typically hold qualifications such as a
@@ -88,15 +93,23 @@ export const HowToDrawer = ({ onClick, open }: FilterDrawerProps) => {
             seeking therapy, and get a feel for how they work. Some questions to
             consider:
           </Typography>
-          <Typography variant="body2" mb={2}>
-            <ul style={{ marginLeft: "24px" }}>
-              <li>How do you typically structure sessions?</li>
-              <li>
+          <ul style={{ marginLeft: "24px", mb: 2 }}>
+            <li>
+              <Typography variant="body2" mb={2}>
+                How do you typically structure sessions?
+              </Typography>
+            </li>
+            <li>
+              <Typography variant="body2" mb={2}>
                 Have you worked with men facing similar challenges before?
-              </li>
-              <li>What’s your approach to therapy?</li>
-            </ul>
-          </Typography>
+              </Typography>
+            </li>
+            <li>
+              <Typography variant="body2" mb={2}>
+                What’s your approach to therapy?
+              </Typography>
+            </li>
+          </ul>
           <Typography variant="body2" mb={2}>
             Trust your instincts during this conversation. A good therapeutic
             relationship is built on trust and rapport.
