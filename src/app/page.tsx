@@ -1,5 +1,5 @@
-import DividerComponent from "@/app/(frontend)/components/DividerComponent";
-import { HomeForm } from "@/app/(frontend)/components/HomeFormComponent";
+import DividerComponent from "@/app/components/DividerComponent";
+import { HomeForm } from "@/app/components/HomeFormComponent";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";

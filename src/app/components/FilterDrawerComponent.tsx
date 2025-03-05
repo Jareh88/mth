@@ -18,9 +18,9 @@ import ButtonCheckboxGroupComponent from "./form/ButtonCheckboxGroupComponent";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { PriceSlider } from "./form/PriceSliderComponent";
 import DividerComponent from "./DividerComponent";
-import placeholderSpecialisms from "@/app/(frontend)/helpers/placeholderSpecialisms";
+import placeholderSpecialisms from "@/app/helpers/placeholderSpecialisms";
 import Close from "@mui/icons-material/Close";
-import placeholderTherapyTypes from "@/app/(frontend)/helpers/placeholderTherapyTypes";
+import placeholderTherapyTypes from "@/app/helpers/placeholderTherapyTypes";
 import LaptopOutlinedIcon from "@mui/icons-material/LaptopOutlined";
 import ChairOutlinedIcon from "@mui/icons-material/ChairOutlined";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -28,9 +28,9 @@ import HouseIcon from "@mui/icons-material/House";
 import SkateboardingIcon from "@mui/icons-material/Skateboarding";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
-import placeholderEthnicities from "@/app/(frontend)/helpers/placeholderEthnicities";
+import placeholderEthnicities from "@/app/helpers/placeholderEthnicities";
 import { useState } from "react";
-import placeholderLanguages from "@/app/(frontend)/helpers/placeholderLanguages";
+import placeholderLanguages from "@/app/helpers/placeholderLanguages";
 
 type FilterDrawerProps = {
   onClick: () => void;

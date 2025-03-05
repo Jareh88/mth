@@ -4,13 +4,13 @@ import "./responsive.css";
 import { Roboto, Rubik } from "next/font/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
-import theme from "@/app/(frontend)/theme";
+import theme from "@/app/theme";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Box } from "@mui/material";
-import { Header } from "@/app/(frontend)/components/HeaderComponent";
+import { Header } from "@/app/components/HeaderComponent";
 import Image from "next/image";
-import StickyHeader from "@/app/(frontend)/components/StickyHeader";
-import Footer from "@/app/(frontend)/components/FooterComponent";
+import StickyHeader from "@/app/components/StickyHeader";
+import Footer from "@/app/components/FooterComponent";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],

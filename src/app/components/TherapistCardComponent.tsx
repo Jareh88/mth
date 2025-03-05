@@ -15,7 +15,7 @@ import Image from "next/image";
 import Grid from "@mui/material/Grid2";
 
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import { TherapistProps } from "@/app/(frontend)/lib/types";
+import { TherapistProps } from "@/app/lib/types";
 import Link from "next/link";
 import WorkingMethodComponent from "./WorkingMethodComponent";
 
