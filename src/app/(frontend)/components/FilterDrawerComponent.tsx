@@ -18,9 +18,9 @@ import ButtonCheckboxGroupComponent from "./form/ButtonCheckboxGroupComponent";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { PriceSlider } from "./form/PriceSliderComponent";
 import DividerComponent from "./DividerComponent";
-import placeholderSpecialisms from "@/helpers/placeholderSpecialisms";
+import placeholderSpecialisms from "@/app/(frontend)/helpers/placeholderSpecialisms";
 import Close from "@mui/icons-material/Close";
-import placeholderTherapyTypes from "@/helpers/placeholderTherapyTypes";
+import placeholderTherapyTypes from "@/app/(frontend)/helpers/placeholderTherapyTypes";
 import LaptopOutlinedIcon from "@mui/icons-material/LaptopOutlined";
 import ChairOutlinedIcon from "@mui/icons-material/ChairOutlined";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -28,9 +28,9 @@ import HouseIcon from "@mui/icons-material/House";
 import SkateboardingIcon from "@mui/icons-material/Skateboarding";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
-import placeholderEthnicities from "@/helpers/placeholderEthnicities";
+import placeholderEthnicities from "@/app/(frontend)/helpers/placeholderEthnicities";
 import { useState } from "react";
-import placeholderLanguages from "@/helpers/placeholderLanguages";
+import placeholderLanguages from "@/app/(frontend)/helpers/placeholderLanguages";
 
 type FilterDrawerProps = {
   onClick: () => void;
@@ -199,7 +199,7 @@ export const FilterDrawer = ({ onClick, open }: FilterDrawerProps) => {
             id="panel3-header"
           >
             <Typography variant="h5" component="h4" sx={{ fontSize: "16px" }}>
-              Specialities&nbsp;
+              What do you need help with? &nbsp;
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -215,7 +215,7 @@ export const FilterDrawer = ({ onClick, open }: FilterDrawerProps) => {
                   variant="standard"
                   sx={{ color: "#fff" }}
                   label="Therapist specialities"
-                  placeholder="Pick one or more"
+                  placeholder="Start typing to select..."
                 />
               )}
             />
@@ -266,7 +266,7 @@ export const FilterDrawer = ({ onClick, open }: FilterDrawerProps) => {
                   variant="standard"
                   sx={{ color: "#fff" }}
                   label="Types of therapy"
-                  placeholder="Pick one or more"
+                  placeholder="Start typing to select..."
                 />
               )}
             />
@@ -294,7 +294,7 @@ export const FilterDrawer = ({ onClick, open }: FilterDrawerProps) => {
             id="age-header"
           >
             <Typography variant="h5" component="h4" sx={{ fontSize: "16px" }}>
-              Age
+              Your Age
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -302,15 +302,15 @@ export const FilterDrawer = ({ onClick, open }: FilterDrawerProps) => {
               size="small"
               options={[
                 {
-                  label: "Teen",
+                  label: "14-18",
                   icon: <SkateboardingIcon />,
                 },
                 {
-                  label: "Adults",
+                  label: "18-65",
                   icon: <EmojiPeopleIcon />,
                 },
                 {
-                  label: "Elders (65+)",
+                  label: "65+",
                   icon: <EmojiEventsIcon />,
                 },
               ]}
@@ -340,7 +340,7 @@ export const FilterDrawer = ({ onClick, open }: FilterDrawerProps) => {
             id="ethnicity-header"
           >
             <Typography variant="h5" component="h4" sx={{ fontSize: "16px" }}>
-              Ethnicity
+              Therapist Ethnicity
             </Typography>
           </AccordionSummary>
           <AccordionDetails>

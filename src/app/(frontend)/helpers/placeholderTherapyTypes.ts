@@ -1,5 +1,9 @@
 const placeholderTherapyTypes = [
   {
+    label: "Any",
+    id: "Any",
+  },
+  {
     label: "Accelerated experiential dynamic psychotherapy (AEDP)",
     id: "Accelerated experiential dynamic psychotherapy (AEDP)",
   },

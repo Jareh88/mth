@@ -1,4 +1,4 @@
-import { Divider } from "@mui/material";
+import { Divider, SxProps } from "@mui/material";
 
 export default function DividerComponent({
   width,
@@ -6,7 +6,8 @@ export default function DividerComponent({
   sx = {},
 }: {
   width: string;
-  color: string;
+  color: string | null;
+  sx: SxProps | null;
 }) {
   return (
     <Divider

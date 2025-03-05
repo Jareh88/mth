@@ -1,5 +1,9 @@
 const placeholderEthnicities = [
   {
+    label: "Any",
+    id: "Any",
+  },
+  {
     label: "African / Black / Afro-Carribean",
     id: "African / Black / Afro-Carribean",
   },

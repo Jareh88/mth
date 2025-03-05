@@ -1,4 +1,5 @@
 const placeholderOptions = [
+  { label: "Any", id: "Any" },
   { label: "Abortion", id: "Abortion" },
   { label: "Abuse", id: "Abuse" },
   { label: "Addiction", id: "Addiction" },
