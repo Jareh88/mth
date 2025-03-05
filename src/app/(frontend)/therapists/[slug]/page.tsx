@@ -1,6 +1,6 @@
 import { Container, Typography } from "@mui/material";
-import placeholderTherapists from "@/app/helpers/placeholderTherapists";
-import TherapistProfile from "@/app/components/TherapistProfileComponent";
+import placeholderTherapists from "@/app/(frontend)/helpers/placeholderTherapists";
+import TherapistProfile from "@/app/(frontend)/components/TherapistProfileComponent";
 // import BreadcrumbComponent from "@/components/BreadcrumbComponent";
 import Link from "next/link";
 

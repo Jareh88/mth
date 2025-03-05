@@ -1,5 +1,5 @@
 "use client";
-import { TherapistProps } from "@/app/lib/types";
+import { TherapistProps } from "@/app/(frontend)/lib/types";
 import {
   Box,
   Button,
