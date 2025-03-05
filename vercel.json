@@ -1,7 +1,0 @@
-{
-  "build": {
-    "env": {
-      "NEXT_PUBLIC_IGNORE_TYPE_CHECKS": "true"
-    }
-  }
-}
