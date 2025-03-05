@@ -1,59 +1,254 @@
-import { headers as getHeaders } from 'next/headers.js'
-import Image from 'next/image'
-import { getPayload } from 'payload'
-import React from 'react'
-import { fileURLToPath } from 'url'
+import DividerComponent from "@/app/(frontend)/components/DividerComponent";
+import { HomeForm } from "@/app/(frontend)/components/HomeFormComponent";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+import {
+  Box,
+  Button,
+  Container,
+  getCardHeaderUtilityClass,
+  Typography,
+} from "@mui/material";
+import Grid from "@mui/material/Grid2";
+import Link from "next/link";
+import Groups3OutlinedIcon from "@mui/icons-material/Groups3Outlined";
+import VoiceOverOffOutlinedIcon from "@mui/icons-material/VoiceOverOffOutlined";
+import HandshakeOutlinedIcon from "@mui/icons-material/HandshakeOutlined";
+import PsychologyAltOutlinedIcon from "@mui/icons-material/PsychologyAltOutlined";
+import QuestionAnswerOutlinedIcon from "@mui/icons-material/QuestionAnswerOutlined";
 
-import config from '@/payload.config'
-import './styles.css'
-
-export default async function HomePage() {
-  const headers = await getHeaders()
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig })
-  const { user } = await payload.auth({ headers })
-
-  const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
-
+export default function Home() {
   return (
-    <div className="home">
-      <div className="content">
-        <picture>
-          <source srcSet="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg" />
-          <Image
-            alt="Payload Logo"
-            height={65}
-            src="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg"
-            width={65}
-          />
-        </picture>
-        {!user && <h1>Welcome to your new project.</h1>}
-        {user && <h1>Welcome back, {user.email}</h1>}
-        <div className="links">
-          <a
-            className="admin"
-            href={payloadConfig.routes.admin}
-            rel="noopener noreferrer"
-            target="_blank"
+    <>
+      <Container sx={{ mb: { lg: 6 }, pt: { xs: 0, lg: 6 } }}>
+        <Grid container spacing={8} sx={{ minHeight: "479px" }}>
+          <Grid size={{ xs: 12, md: 6, lg: 5 }}>
+            <HomeForm />
+          </Grid>
+          <Grid
+            size={{ xs: 12, md: 6, lg: 7 }}
+            sx={{
+              alignContent: "center",
+              mb: 6,
+            }}
           >
-            Go to admin panel
-          </a>
-          <a
-            className="docs"
-            href="https://payloadcms.com/docs"
-            rel="noopener noreferrer"
-            target="_blank"
+            <Typography
+              variant="h1"
+              component="h2"
+              color="primary.dark"
+              sx={{ textAlign: "center" }}
+            >
+              Psychotherapy & Counselling
+            </Typography>
+            <Typography
+              variant="h2"
+              component="h2"
+              color="primary.dark"
+              sx={{ textAlign: "center", mb: 2, fontSize: { md: "38px" } }}
+            >
+              by men, for men
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{ color: "#fff", fontSize: { md: "1.27rem" } }}
+            >
+              We are dedicated to connecting men with experienced, accredited
+              male therapists who truly understand the nuances of men’s mental
+              health and are committed to providing high-quality, personalised
+              care.
+            </Typography>
+          </Grid>
+        </Grid>
+      </Container>
+      <Container sx={{ py: { xs: 0, lg: 6 } }}>
+        <Box mb={4}>
+          <Typography
+            variant="h1"
+            component="h2"
+            color="primary.dark"
+            sx={{
+              textAlign: "center",
+              // textTransform: "uppercase",
+              color: "#ff9900",
+              textTransform: "uppercase",
+            }}
           >
-            Documentation
-          </a>
-        </div>
-      </div>
-      <div className="footer">
-        <p>Update this page by editing</p>
-        <a className="codeLink" href={fileURL}>
-          <code>app/(frontend)/page.tsx</code>
-        </a>
-      </div>
-    </div>
-  )
+            Men&apos;S Therapy Hub
+          </Typography>
+          <Typography
+            variant="h2"
+            component="h2"
+            color="primary.dark"
+            sx={{ textAlign: "center", mb: 4, fontSize: { md: "38px" } }}
+          >
+            Helping you find the help you need.
+          </Typography>
+          <Grid container spacing={2} sx={{ justifyContent: "center" }}>
+            <Grid size={{ xs: 12, md: 6, lg: 4 }} sx={{ mb: { xs: 6, sm: 4 } }}>
+              <Box
+                sx={{
+                  color: "text-secondary",
+                  display: "flex",
+                  justifyContent: "center",
+                  mb: 1,
+                }}
+              >
+                {/* Icon of some kind */}
+
+                <Groups3OutlinedIcon sx={{ color: "#fff", fontSize: "6rem" }} />
+              </Box>
+              <Box>
+                {/* Title */}
+                <Typography
+                  variant="h3"
+                  component="h3"
+                  color="text.secondary"
+                  align="center"
+                  mb={1}
+                  // sx={{ fontSize: "24px" }}
+                >
+                  Why choose a male therapist?
+                </Typography>
+                <DividerComponent width="30%" color="#fff" sx={{ mb: 2 }} />
+              </Box>
+              <Box px={2}>
+                {/* Para */}
+                <Typography
+                  variant="body1"
+                  color="text.secondary"
+                  sx={{ fontSize: { md: "1.27rem" }, mt: 3, mb: 4 }}
+                >
+                  For some men, working with a male therapist can make the
+                  difference, helping to create a more relatable, comfortable
+                  space. Here are some reasons this might be the right choice
+                  for you...
+                </Typography>
+                <Box sx={{ display: "flex", justifyContent: "center" }}>
+                  {/* <Link href="/about"> */}
+                  <Button
+                    variant="contained"
+                    sx={{ backgroundColor: "#07a0c3" }}
+                  >
+                    Read more...
+                  </Button>
+                  {/* </Link> */}
+                </Box>
+              </Box>
+              <Box>{/* CTA */}</Box>
+            </Grid>
+            <Grid size={{ xs: 12, md: 6, lg: 4 }} sx={{ mb: { xs: 6, sm: 4 } }}>
+              <Box
+                sx={{
+                  color: "text-secondary",
+                  display: "flex",
+                  justifyContent: "center",
+                  mb: 1,
+                }}
+              >
+                {/* Icon of some kind */}
+
+                <PsychologyAltOutlinedIcon
+                  sx={{ color: "#fff", fontSize: "6rem" }}
+                />
+              </Box>
+              <Box px={2}>
+                {/* Title */}
+                <Typography
+                  variant="h3"
+                  component="h3"
+                  color="text.secondary"
+                  align="center"
+                  mb={1}
+                  // sx={{ fontSize: "24px" }}
+                >
+                  How to choose a therapist?
+                </Typography>
+                <DividerComponent width="30%" color="#fff" sx={{ mb: 2 }} />
+              </Box>
+
+              <Box px={2}>
+                {/* Para */}
+                <Typography
+                  variant="body1"
+                  color="text.secondary"
+                  sx={{ fontSize: { md: "1.27rem" }, mt: 3, mb: 4 }}
+                >
+                  Choosing a therapist can be a daunting task. We’ve developed
+                  our ‘Get Matched’ service to help you find the right
+                  therapist. Still not sure? We’ve come up with some key points
+                  to consider...
+                </Typography>
+                <Box sx={{ display: "flex", justifyContent: "center" }}>
+                  {/* <Link href="/about"> */}
+                  <Button
+                    variant="contained"
+                    sx={{ backgroundColor: "#07a0c3" }}
+                  >
+                    Read more...
+                  </Button>
+                  {/* </Link> */}
+                </Box>
+              </Box>
+              <Box>{/* CTA */}</Box>
+            </Grid>
+            <Grid size={{ xs: 12, md: 6, lg: 4 }} sx={{ mb: { xs: 6, sm: 4 } }}>
+              <Box
+                sx={{
+                  color: "text-secondary",
+                  display: "flex",
+                  justifyContent: "center",
+                  mb: 1,
+                }}
+              >
+                {/* Icon of some kind */}
+
+                <QuestionAnswerOutlinedIcon
+                  sx={{ color: "#fff", fontSize: "6rem" }}
+                />
+              </Box>
+              <Box>
+                {/* Title */}
+                <Typography
+                  variant="h3"
+                  component="h3"
+                  color="text.secondary"
+                  align="center"
+                  mb={1}
+                  // sx={{ fontSize: "24px" }}
+                >
+                  What can I get support for?
+                </Typography>
+                <DividerComponent width="30%" color="#fff" sx={{ mb: 2 }} />
+              </Box>
+              <Box>
+                {/* Para */}
+                <Typography
+                  variant="body1"
+                  color="text.secondary"
+                  sx={{ fontSize: { md: "1.27rem" }, mt: 3, mb: 4 }}
+                >
+                  Men face a variety of challenges with their mental health.
+                  We’ve created a library to help you navigate through
+                  everything from common issues, symptoms, treatment options and
+                  more...
+                </Typography>
+                <Box sx={{ display: "flex", justifyContent: "center" }}>
+                  {/* <Link href="/about"> */}
+                  <Button
+                    variant="contained"
+                    sx={{ backgroundColor: "#07a0c3" }}
+                  >
+                    Read more...
+                  </Button>
+                  {/* </Link> */}
+                </Box>
+              </Box>
+            </Grid>
+          </Grid>
+        </Box>
+      </Container>
+    </>
+  );
 }
