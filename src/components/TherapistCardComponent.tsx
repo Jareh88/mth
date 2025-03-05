@@ -26,7 +26,7 @@ type TherapistCardProps = {
 export default function TherapistCard({ therapist }: TherapistCardProps) {
   return (
     <>
-      <Grid size={{ xs: 6, lg: 4 }}>
+      <Grid size={{ xs: 12, md: 6, lg: 4 }}>
         <Card sx={{ height: "100%" }} className="therapist-card">
           <Box
             sx={{

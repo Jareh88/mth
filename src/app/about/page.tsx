@@ -24,7 +24,7 @@ import DividerComponent from "@/components/DividerComponent";
 export default function About() {
   return (
     <>
-      <Container sx={{ py: 10 }}>
+      <Container sx={{ py: { xs: 0, lg: 6 } }}>
         <Grid container spacing={8}>
           <Grid size={8} sx={{ color: "text.secondary", pr: 8 }}>
             <Typography variant="h1" component="h2" mb={4}>
@@ -249,8 +249,8 @@ export default function About() {
           </Grid>
         </Grid>
       </Container>
-      <DividerComponent width="100%" color="text.secondary" />
-      <Container sx={{ py: 10 }}>
+      <DividerComponent width="100%" color="text.secondary" sx={{ mb: 2 }} />
+      <Container sx={{ py: { xs: 0, lg: 6 } }}>
         <Grid container spacing={8}>
           <Grid size={4} justifyItems="flex-start">
             <Box

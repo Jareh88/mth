@@ -10,6 +10,7 @@ import { Box } from "@mui/material";
 import { Header } from "@/components/HeaderComponent";
 import Image from "next/image";
 import StickyHeader from "@/components/StickyHeader";
+import Footer from "@/components/FooterComponent";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -62,6 +63,7 @@ export default function RootLayout({
                 <Header />
                 <StickyHeader />
                 {children}
+                <Footer />
               </Box>
             </Box>
           </ThemeProvider>

@@ -131,3 +131,10 @@ a {
 .sticky-header.visible {
   transform: translateY(0);
 }
+
+.mobile-nav-link {
+  color: #ff9900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 14px;
+}

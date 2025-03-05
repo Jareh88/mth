@@ -47,9 +47,10 @@ export const HomeForm = () => {
       sx={{
         bgcolor: "primary.dark",
         color: "primary.contrastText",
-        p: 6,
-        border: "6px solid #ff9900",
+        p: { xs: 3, sm: 4, lg: 6 },
+        border: { xs: "4px solid #ff9900", sm: "6px solid #ff9900" },
         borderRadius: "16px",
+        mb: { xs: 0, md: 6 },
       }}
     >
       <Box sx={{ width: "100%" }}>

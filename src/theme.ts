@@ -1,9 +1,9 @@
 "use client";
 
 import { grey } from "@mui/material/colors";
-import { createTheme } from "@mui/material/styles";
+import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
-const theme = createTheme({
+let theme = createTheme({
   palette: {
     mode: "dark",
     primary: {
@@ -34,27 +34,27 @@ const theme = createTheme({
     h1: {
       fontFamily: "Rubik",
       fontWeight: 700,
-      fontSize: 42,
+      fontSize: 36,
     },
     h2: {
       fontFamily: "Rubik",
       fontWeight: 700,
-      fontSize: 32,
+      fontSize: 26,
     },
     h3: {
       fontFamily: "Rubik",
       fontWeight: 700,
-      fontSize: 24,
+      fontSize: 22,
     },
     h4: {
       fontFamily: "Rubik",
       fontWeight: 700,
-      fontSize: 22,
+      fontSize: 20,
     },
     h5: {
       fontFamily: "Rubik",
       fontWeight: 700,
-      fontSize: 18,
+      fontSize: 16,
     },
     h6: {
       fontFamily: "Rubik",
@@ -64,12 +64,12 @@ const theme = createTheme({
     subtitle1: {
       fontFamily: "Rubik",
       fontWeight: 700,
-      fontSize: 24,
+      fontSize: 22,
     },
     subtitle2: {
       fontFamily: "Rubik",
       fontWeight: 700,
-      fontSize: 24,
+      fontSize: 20,
     },
     body1: {
       fontSize: "1rem",
@@ -273,15 +273,37 @@ const theme = createTheme({
         },
       },
     },
+    MuiAccordion: {
+      styleOverrides: {
+        root: {
+          margin: "8px 0",
+          "&.Mui-expanded": {
+            margin: "8px 0",
+          },
+        },
+      },
+    },
     MuiAccordionSummary: {
       styleOverrides: {
         root: {
           borderRadius: "4px",
+          minHeight: "24px",
+          padding: "8px 16px",
           "&:hover:not(.MuiDisabled)": {
             backgroundColor: "#e5f3fb",
           },
           "&:hover:not(.MuiDisabled)[aria-expanded='false']": {
             backgroundColor: "transparent",
+          },
+          "& .MuiAccordionSummary-contentGutters": {
+            margin: 0,
+          },
+          "&.Mui-expanded": {
+            minHeight: "24px",
+            padding: "8px 16px",
+            "& .MuiAccordionSummary-contentGutters": {
+              margin: 0,
+            },
           },
         },
       },
@@ -301,5 +323,7 @@ const theme = createTheme({
     },
   },
 });
+
+theme = responsiveFontSizes(theme);
 
 export default theme;

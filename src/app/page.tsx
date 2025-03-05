@@ -16,15 +16,16 @@ import QuestionAnswerOutlinedIcon from "@mui/icons-material/QuestionAnswerOutlin
 export default function Home() {
   return (
     <>
-      <Container sx={{ py: 10 }}>
+      <Container sx={{ mb: { lg: 6 }, pt: { xs: 0, lg: 6 } }}>
         <Grid container spacing={8} sx={{ minHeight: "479px" }}>
-          <Grid size={5}>
+          <Grid size={{ xs: 12, md: 6, lg: 5 }}>
             <HomeForm />
           </Grid>
           <Grid
-            size={7}
+            size={{ xs: 12, md: 6, lg: 7 }}
             sx={{
               alignContent: "center",
+              mb: 6,
             }}
           >
             <Typography
@@ -39,13 +40,13 @@ export default function Home() {
               variant="h2"
               component="h2"
               color="primary.dark"
-              sx={{ textAlign: "center", mb: 2, fontSize: "38px" }}
+              sx={{ textAlign: "center", mb: 2, fontSize: { md: "38px" } }}
             >
               by men, for men
             </Typography>
             <Typography
               variant="body1"
-              sx={{ color: "#fff", fontSize: "1.27rem" }}
+              sx={{ color: "#fff", fontSize: { md: "1.27rem" } }}
             >
               We are dedicated to connecting men with experienced, accredited
               male therapists who truly understand the nuances of men’s mental
@@ -55,7 +56,7 @@ export default function Home() {
           </Grid>
         </Grid>
       </Container>
-      <Container sx={{ py: 10 }}>
+      <Container sx={{ py: { xs: 0, lg: 6 } }}>
         <Box mb={4}>
           <Typography
             variant="h1"
@@ -74,12 +75,12 @@ export default function Home() {
             variant="h2"
             component="h2"
             color="primary.dark"
-            sx={{ textAlign: "center", mb: 4, fontSize: "38px" }}
+            sx={{ textAlign: "center", mb: 4, fontSize: { md: "38px" } }}
           >
             Helping you find the help you need.
           </Typography>
-          <Grid container spacing={2}>
-            <Grid size={4}>
+          <Grid container spacing={2} sx={{ justifyContent: "center" }}>
+            <Grid size={{ xs: 12, md: 6, lg: 4 }} sx={{ mb: { xs: 6, sm: 4 } }}>
               <Box
                 sx={{
                   color: "text-secondary",
@@ -104,14 +105,14 @@ export default function Home() {
                 >
                   Why choose a male therapist?
                 </Typography>
-                <DividerComponent width="30%" color="#fff" />
+                <DividerComponent width="30%" color="#fff" sx={{ mb: 2 }} />
               </Box>
               <Box px={2}>
                 {/* Para */}
                 <Typography
                   variant="body1"
                   color="text.secondary"
-                  sx={{ fontSize: "1.27rem", mt: 3, mb: 4 }}
+                  sx={{ fontSize: { md: "1.27rem" }, mt: 3, mb: 4 }}
                 >
                   For some men, working with a male therapist can make the
                   difference, helping to create a more relatable, comfortable
@@ -131,7 +132,7 @@ export default function Home() {
               </Box>
               <Box>{/* CTA */}</Box>
             </Grid>
-            <Grid size={4}>
+            <Grid size={{ xs: 12, md: 6, lg: 4 }} sx={{ mb: { xs: 6, sm: 4 } }}>
               <Box
                 sx={{
                   color: "text-secondary",
@@ -158,7 +159,7 @@ export default function Home() {
                 >
                   How to choose a therapist?
                 </Typography>
-                <DividerComponent width="30%" color="#fff" />
+                <DividerComponent width="30%" color="#fff" sx={{ mb: 2 }} />
               </Box>
 
               <Box px={2}>
@@ -166,7 +167,7 @@ export default function Home() {
                 <Typography
                   variant="body1"
                   color="text.secondary"
-                  sx={{ fontSize: "1.27rem", mt: 3, mb: 4 }}
+                  sx={{ fontSize: { md: "1.27rem" }, mt: 3, mb: 4 }}
                 >
                   Choosing a therapist can be a daunting task. We’ve developed
                   our ‘Get Matched’ service to help you find the right
@@ -186,7 +187,7 @@ export default function Home() {
               </Box>
               <Box>{/* CTA */}</Box>
             </Grid>
-            <Grid size={4}>
+            <Grid size={{ xs: 12, md: 6, lg: 4 }} sx={{ mb: { xs: 6, sm: 4 } }}>
               <Box
                 sx={{
                   color: "text-secondary",
@@ -213,14 +214,14 @@ export default function Home() {
                 >
                   What can I get support for?
                 </Typography>
-                <DividerComponent width="30%" color="#fff" />
+                <DividerComponent width="30%" color="#fff" sx={{ mb: 2 }} />
               </Box>
               <Box>
                 {/* Para */}
                 <Typography
                   variant="body1"
                   color="text.secondary"
-                  sx={{ fontSize: "1.27rem", mt: 3, mb: 4 }}
+                  sx={{ fontSize: { md: "1.27rem" }, mt: 3, mb: 4 }}
                 >
                   Men face a variety of challenges with their mental health.
                   We’ve created a library to help you navigate through

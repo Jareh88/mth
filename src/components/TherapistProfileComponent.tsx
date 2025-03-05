@@ -31,7 +31,7 @@ export default function TherapistProfile({ therapist }: TherapistProfileProps) {
     >
       <Grid container spacing={2}>
         {/* Left side section */}
-        <Grid size={8} sx={{ p: 4 }}>
+        <Grid size={{ xs: 12, lg: 8 }} sx={{ p: 4 }}>
           {/* Photo/Title section */}
           <Box mb={2}>
             <Grid container>
@@ -133,7 +133,10 @@ export default function TherapistProfile({ therapist }: TherapistProfileProps) {
         </Grid>
 
         {/* Right side section */}
-        <Grid size={4} sx={{ backgroundColor: "#e9f3fb", p: 3 }}>
+        <Grid
+          size={{ xs: 12, lg: 4 }}
+          sx={{ backgroundColor: "#e9f3fb", p: 3 }}
+        >
           <Box mb={2}>
             <Typography variant="h4" mb={1}>
               Get in touch:

@@ -24,6 +24,7 @@ const CheckboxButton = ({
   startIcon,
   id,
   children,
+  size,
 }: CheckboxButtonProps) => {
   const isSelected = selected[id];
 
@@ -36,7 +37,7 @@ const CheckboxButton = ({
       sx={{
         width: "100%",
         mr: 1,
-        p: 2,
+        p: size === "medium" ? 2 : 1,
         ...(isSelected && {
           backgroundColor: "rgba(2, 136, 209, 0.2)",
           fontWeight: 700,
@@ -47,12 +48,17 @@ const CheckboxButton = ({
         }),
       }}
     >
-      <Typography variant="body1">{children}</Typography>
+      <Typography variant={size === "medium" ? "body1" : "body2"}>
+        {children}
+      </Typography>
     </Button>
   );
 };
 
-export default function ButtonCheckboxGroup({ options }: ButtonCheckboxGroup) {
+export default function ButtonCheckboxGroup({
+  options,
+  size = "medium",
+}: ButtonCheckboxGroup) {
   let initialState = {};
 
   options.forEach((option, index) => {
@@ -75,6 +81,7 @@ export default function ButtonCheckboxGroup({ options }: ButtonCheckboxGroup) {
               handleButtonClick={() => handleButtonClick(index)}
               selected={selected}
               startIcon={option.icon}
+              size={size}
             >
               {option.label}
             </CheckboxButton>

@@ -61,7 +61,8 @@ export const PriceSlider = () => {
         />
       </Box>
       <Typography
-        variant="h5"
+        variant="body1"
+        component="h5"
         sx={{ fontWeight: 400 }}
         mb={1}
       >{`Price Range: ${valueText(value[0])} - ${valueText(

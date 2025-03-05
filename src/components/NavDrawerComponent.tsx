@@ -1,3 +1,4 @@
+import { StayPrimaryLandscape } from "@mui/icons-material";
 import {
   Box,
   Divider,
@@ -17,20 +18,29 @@ type NavDrawerProps = {
 export const NavDrawer = ({ onClick, open }: NavDrawerProps) => {
   const DrawerList = (
     <Box
-      sx={{ width: 250, color: "text.secondary" }}
+      sx={{
+        width: 300,
+        height: "100%",
+        color: "text.secondary",
+        backgroundColor: "secondary.main",
+      }}
       role="presentation"
       onClick={onClick}
     >
       <List>
         {[
-          { text: "About", link: "/about" },
-          { text: "Find a Therapist", link: "/therapists" },
-          { text: "Join Our Directory", link: "/join" },
+          { text: "Resources", link: "/resources" },
+          { text: "Find Your Therapist", link: "/therapists" },
+          { text: "Join The Directory", link: "/join" },
+          { text: "About MTH", link: "/join" },
         ].map((navItem, index) => (
           <Link href={navItem.link} key={index}>
             <ListItem disablePadding>
               <ListItemButton>
-                <ListItemText primary={navItem.text} />
+                <ListItemText
+                  primary={navItem.text}
+                  className="mobile-nav-link"
+                />
               </ListItemButton>
             </ListItem>
           </Link>
@@ -39,13 +49,16 @@ export const NavDrawer = ({ onClick, open }: NavDrawerProps) => {
       <Divider />
       <List>
         {[
-          { text: "Blog", link: "/blog" },
-          { text: "Contact Us", link: "/contact" },
+          { text: "Search", link: "/search" },
+          { text: "Login", link: "/login" },
         ].map((navItem, index) => (
           <Link href={navItem.link} key={index}>
             <ListItem key={index} disablePadding>
               <ListItemButton>
-                <ListItemText primary={navItem.text} />
+                <ListItemText
+                  primary={navItem.text}
+                  className="mobile-nav-link"
+                />
               </ListItemButton>
             </ListItem>
           </Link>

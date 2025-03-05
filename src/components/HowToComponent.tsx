@@ -15,6 +15,7 @@ export default function HowToComponent() {
         sx={{
           border: "2px solid #07a0c3",
           width: "100%",
+          maxWidth: "200px",
           py: 2,
           px: 3,
           backgroundColor: "#07a0c3",

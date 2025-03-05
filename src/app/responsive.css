@@ -1,5 +1,8 @@
 .header-link.nav-btn {
   display: inline-flex !important;
+  position: absolute;
+  right: 0;
+  z-index: 1;
 }
 
 .header-link {

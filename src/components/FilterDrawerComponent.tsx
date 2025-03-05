@@ -56,7 +56,7 @@ export const FilterDrawer = ({ onClick, open }: FilterDrawerProps) => {
         height: "100%",
         backgroundColor: "#fff",
         color: "#0A3449",
-        py: "72px",
+        py: "56px",
         overflow: "auto",
       }}
       role="presentation"
@@ -64,7 +64,7 @@ export const FilterDrawer = ({ onClick, open }: FilterDrawerProps) => {
       <Box
         sx={{
           backgroundColor: "#e5f3fb",
-          p: 2,
+          p: 1,
           position: "absolute",
           top: "0",
           right: "0",
@@ -76,14 +76,15 @@ export const FilterDrawer = ({ onClick, open }: FilterDrawerProps) => {
         }}
       >
         <Typography
-          variant="h3"
+          variant="h5"
+          component="h3"
           sx={{
             px: 2,
           }}
         >
           Get Matched
         </Typography>
-        <Typography variant="h6">
+        <Typography component="h6" variant="body2">
           Use our filter tools to narrow down your options
         </Typography>
         <Button variant="text" endIcon={<Close />} onClick={onClick}>
@@ -108,12 +109,13 @@ export const FilterDrawer = ({ onClick, open }: FilterDrawerProps) => {
             aria-controls="panel1-content"
             id="panel1-header"
           >
-            <Typography variant="h5" component="h4">
+            <Typography variant="h5" component="h4" sx={{ fontSize: "16px" }}>
               Type of Session
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <ButtonCheckboxGroupComponent
+              size="small"
               options={[
                 {
                   label: "In Person",
@@ -152,7 +154,9 @@ export const FilterDrawer = ({ onClick, open }: FilterDrawerProps) => {
             "& .MuiSlider-track": {
               borderColor: "#0A3449",
             },
-            mb: 1,
+            "&.MuiAccordion-root": {
+              margin: "8px 0",
+            },
           }}
           elevation={0}
         >
@@ -161,7 +165,7 @@ export const FilterDrawer = ({ onClick, open }: FilterDrawerProps) => {
             aria-controls="panel2-content"
             id="panel2-header"
           >
-            <Typography variant="h5" component="h4">
+            <Typography variant="h5" component="h4" sx={{ fontSize: "16px" }}>
               Price per session
             </Typography>
           </AccordionSummary>
@@ -194,7 +198,7 @@ export const FilterDrawer = ({ onClick, open }: FilterDrawerProps) => {
             aria-controls="panel3-content"
             id="panel3-header"
           >
-            <Typography variant="h5" component="h4">
+            <Typography variant="h5" component="h4" sx={{ fontSize: "16px" }}>
               Specialities&nbsp;
             </Typography>
           </AccordionSummary>
@@ -234,7 +238,9 @@ export const FilterDrawer = ({ onClick, open }: FilterDrawerProps) => {
             "& .MuiSlider-track": {
               borderColor: "#0A3449",
             },
-            mb: 1,
+            "&.MuiAccordion-root": {
+              margin: "8px 0",
+            },
           }}
           elevation={0}
         >
@@ -243,7 +249,7 @@ export const FilterDrawer = ({ onClick, open }: FilterDrawerProps) => {
             aria-controls="panel4-content"
             id="panel4-header"
           >
-            <Typography variant="h5" component="h4">
+            <Typography variant="h5" component="h4" sx={{ fontSize: "16px" }}>
               Therapy Types
             </Typography>
           </AccordionSummary>
@@ -287,12 +293,13 @@ export const FilterDrawer = ({ onClick, open }: FilterDrawerProps) => {
             aria-controls="age-content"
             id="age-header"
           >
-            <Typography variant="h5" component="h4">
+            <Typography variant="h5" component="h4" sx={{ fontSize: "16px" }}>
               Age
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <ButtonCheckboxGroupComponent
+              size="small"
               options={[
                 {
                   label: "Teen",
@@ -332,7 +339,7 @@ export const FilterDrawer = ({ onClick, open }: FilterDrawerProps) => {
             aria-controls="ethnicity-content"
             id="ethnicity-header"
           >
-            <Typography variant="h5" component="h4">
+            <Typography variant="h5" component="h4" sx={{ fontSize: "16px" }}>
               Ethnicity
             </Typography>
           </AccordionSummary>
@@ -379,7 +386,7 @@ export const FilterDrawer = ({ onClick, open }: FilterDrawerProps) => {
             aria-controls="ethnicity-content"
             id="ethnicity-header"
           >
-            <Typography variant="h5" component="h4">
+            <Typography variant="h5" component="h4" sx={{ fontSize: "16px" }}>
               Preferred Language
             </Typography>
           </AccordionSummary>
@@ -409,7 +416,7 @@ export const FilterDrawer = ({ onClick, open }: FilterDrawerProps) => {
           sx={{
             backgroundColor: "#e5f3fb",
             px: 4,
-            py: 2,
+            py: 1,
             position: "absolute",
             bottom: "0",
             right: "0",
@@ -421,7 +428,10 @@ export const FilterDrawer = ({ onClick, open }: FilterDrawerProps) => {
           }}
         >
           <Button variant="text">Clear Filters</Button>
-          <Button variant="contained">{`Show ${"xx"} Therapists`}</Button>
+          <Button
+            variant="contained"
+            size="small"
+          >{`Show ${"xx"} Therapists`}</Button>
         </Box>
       </Box>
     </Box>

@@ -13,40 +13,48 @@ export default function Therapists() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <SearchQueryEdit />
-      <Container sx={{ py: 10 }}>
-        <Grid container spacing={2} mb={2}>
-          <Grid size={2} sx={{ display: "flex", alignItems: "center" }}>
+      <Container sx={{ py: { xs: 0, lg: 6 } }}>
+        <Grid container spacing={2} mb={2} sx={{ justifyContent: "center" }}>
+          <Grid
+            size={{ xs: 12, lg: 2 }}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              mb: 2,
+            }}
+          >
             <HowToComponent />
           </Grid>
-          <Grid size={8}>
+          <Grid size={{ xs: 12, sm: 8, lg: 8 }}>
             <Typography
               variant="h1"
               component="h2"
               color="text.secondary"
-              align="center"
               mb={2}
+              sx={{ textAlign: { xs: "left", lg: "center" } }}
             >
               Choose your therapist:
             </Typography>
             <Typography
               variant="h3"
               color="text.secondary"
-              align="center"
               mb={2}
+              sx={{ textAlign: { xs: "left", lg: "center" } }}
             >
               Success in therapy starts with choosing the right therapist.
             </Typography>
             <Typography
               variant="body1"
               color="text.secondary"
-              align="center"
+              sx={{ textAlign: { xs: "left", lg: "center" } }}
               mb={4}
             >
               You can always go with your gut, or try our &quot;get
               matched&quot; tool to narrow down your options.
             </Typography>
           </Grid>
-          <Grid size={2}>
+          <Grid size={{ xs: 12, sm: 4, lg: 2 }}>
             <GetMatchedFilters />
           </Grid>
         </Grid>
