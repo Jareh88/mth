@@ -1,13 +1,13 @@
 // import Image from "next/image";
 "use client";
 import Grid from "@mui/material/Grid2";
-import placeholderTherapists from "@/app/(frontend)/helpers/placeholderTherapists";
-import TherapistCard from "@/app/(frontend)/components/TherapistCardComponent";
+import placeholderTherapists from "@frontend/helpers/placeholderTherapists";
+import TherapistCard from "@frontend/components/TherapistCardComponent";
 import { Container, Typography } from "@mui/material";
-import GetMatchedFilters from "@/app/(frontend)/components/GetMatchedFiltersComponent";
+import GetMatchedFilters from "@frontend/components/GetMatchedFiltersComponent";
 import { Suspense } from "react";
-import HowToComponent from "@/app/(frontend)/components/HowToComponent";
-import SearchQueryEdit from "@/app/(frontend)/components/SearchQueryEdit";
+import HowToComponent from "@frontend/components/HowToComponent";
+import SearchQueryEdit from "@frontend/components/SearchQueryEdit";
 
 export default function Therapists() {
   return (

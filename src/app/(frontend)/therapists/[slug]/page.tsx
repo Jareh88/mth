@@ -1,6 +1,7 @@
+import placeholderTherapists from "@frontend/helpers/placeholderTherapists";
+
 import { Container, Typography } from "@mui/material";
-import placeholderTherapists from "@/app/(frontend)/helpers/placeholderTherapists";
-import TherapistProfile from "@/app/(frontend)/components/TherapistProfileComponent";
+import TherapistProfile from "@frontend/components/TherapistProfileComponent";
 // import BreadcrumbComponent from "@/components/BreadcrumbComponent";
 import Link from "next/link";
 
@@ -9,6 +10,17 @@ export async function generateStaticParams() {
     slug: therapist.slug,
   }));
 }
+
+// export async function generateStaticParams() {
+//   const response = await fetch(
+//     `${process.env.PAYLOAD_PUBLIC_URL}/api/therapists`
+//   );
+//   const therapists = await response.json();
+
+//   return therapists.docs.map((therapist: { slug: string }) => ({
+//     slug: therapist.slug,
+//   }));
+// }
 
 export default async function Page({
   params,

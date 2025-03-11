@@ -16,4 +16,15 @@ const placeholderEthnicities = [
   { label: "Other", id: "Other" },
 ];
 
+export const actualEthnicities = [
+  "African / Black / Afro-Carribean",
+  "Asian",
+  "Arab / Middle-Eastern",
+  "Hispanic / Latino / Latinx",
+  "European / White",
+  "Mixed / Multi-ethnic",
+  "Jewish",
+  "Other",
+];
+
 export default placeholderEthnicities;
