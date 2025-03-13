@@ -1,3 +1,4 @@
+"use client";
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ExtensionIcon from "@mui/icons-material/Extension";

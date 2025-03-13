@@ -1,5 +1,4 @@
 // import Image from "next/image";
-"use client";
 import Grid from "@mui/material/Grid2";
 import placeholderTherapists from "@frontend/helpers/placeholderTherapists";
 import TherapistCard from "@frontend/components/TherapistCardComponent";
@@ -8,8 +7,20 @@ import GetMatchedFilters from "@frontend/components/GetMatchedFiltersComponent";
 import { Suspense } from "react";
 import HowToComponent from "@frontend/components/HowToComponent";
 import SearchQueryEdit from "@frontend/components/SearchQueryEdit";
+import { getPayloadInstance } from "@frontend/lib/payload";
 
-export default function Therapists() {
+export default async function Therapists() {
+  "use server"; // Ensures this component is server-side
+
+  const payload = await getPayloadInstance();
+  const therapists = await payload.find({
+    collection: "therapists",
+    limit: 20,
+    sort: "name",
+  });
+
+  console.log(therapists);
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <SearchQueryEdit />
