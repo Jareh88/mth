@@ -1,6 +1,7 @@
+"use server"; // Ensures this component is server-side
 // import Image from "next/image";
 import Grid from "@mui/material/Grid2";
-import placeholderTherapists from "@frontend/helpers/placeholderTherapists";
+// import placeholderTherapists from "@frontend/helpers/placeholderTherapists";
 import TherapistCard from "@frontend/components/TherapistCardComponent";
 import { Container, Typography } from "@mui/material";
 import GetMatchedFilters from "@frontend/components/GetMatchedFiltersComponent";
@@ -8,18 +9,15 @@ import { Suspense } from "react";
 import HowToComponent from "@frontend/components/HowToComponent";
 import SearchQueryEdit from "@frontend/components/SearchQueryEdit";
 import { getPayloadInstance } from "@frontend/lib/payload";
+import placeholderTherapists from "../helpers/placeholderTherapists";
 
 export default async function Therapists() {
-  "use server"; // Ensures this component is server-side
-
   const payload = await getPayloadInstance();
-  const therapists = await payload.find({
+  const { docs: therapists } = await payload.find({
     collection: "therapists",
     limit: 20,
     sort: "name",
   });
-
-  console.log(therapists);
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
@@ -70,6 +68,13 @@ export default async function Therapists() {
           </Grid>
         </Grid>
         <Grid container spacing={1}>
+          {therapists?.length ? (
+            therapists.map((therapist, index) => (
+              <TherapistCard key={index} therapist={therapist} />
+            ))
+          ) : (
+            <p>No therapists found.</p>
+          )}
           {placeholderTherapists.map((placeholderTherapist, index) => {
             return (
               <TherapistCard key={index} therapist={placeholderTherapist} />

@@ -1,3 +1,4 @@
+"use client";
 import { PropsWithChildren, useState } from "react";
 import { Box, Snackbar } from "@mui/material";
 

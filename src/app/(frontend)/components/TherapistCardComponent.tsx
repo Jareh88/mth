@@ -18,12 +18,12 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import { TherapistProps } from "@frontend/lib/types";
 import Link from "next/link";
 import WorkingMethodComponent from "./WorkingMethodComponent";
+import { getBiographyExcerpt } from "../helpers/getBiographyExcerpt";
+import { CollectionSlug, DataFromCollectionSlug } from "payload";
 
-type TherapistCardProps = {
-  therapist: TherapistProps;
-};
-
-export default function TherapistCard({ therapist }: TherapistCardProps) {
+export default function TherapistCard({
+  therapist,
+}: DataFromCollectionSlug<CollectionSlug>) {
   return (
     <>
       <Grid size={{ xs: 12, md: 6, lg: 4 }}>
@@ -61,18 +61,9 @@ export default function TherapistCard({ therapist }: TherapistCardProps) {
                     </Typography>
 
                     <Box justifyItems={"center"} sx={{ lineHeight: 1 }}>
-                      <Box className="flex-row">
-                        <WorkingMethodComponent
-                          status={therapist.online_or_in_person}
-                        />
-                        <Typography
-                          variant="body2"
-                          component="h4"
-                          sx={{ pl: 1 }}
-                        >
-                          {therapist.online_or_in_person}
-                        </Typography>
-                      </Box>
+                      <WorkingMethodComponent
+                        status={therapist.communication_method}
+                      />
                       {therapist.address && (
                         <Box className="flex-row">
                           <LocationOnOutlinedIcon />
@@ -123,7 +114,7 @@ export default function TherapistCard({ therapist }: TherapistCardProps) {
                     WebkitBoxOrient: "vertical",
                   }}
                 >
-                  {therapist.biography}
+                  {getBiographyExcerpt(therapist.biography)}
                 </Typography>
               </CardContent>
             </Link>

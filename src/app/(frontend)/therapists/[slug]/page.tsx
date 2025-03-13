@@ -4,6 +4,9 @@ import { Container, Typography } from "@mui/material";
 import TherapistProfile from "@frontend/components/TherapistProfileComponent";
 // import BreadcrumbComponent from "@/components/BreadcrumbComponent";
 import Link from "next/link";
+import { getPayloadInstance } from "@frontend/lib/payload";
+import { notFound } from "next/navigation";
+import { convertLexicalToHTML } from "@payloadcms/richtext-lexical";
 
 export async function generateStaticParams() {
   return placeholderTherapists.map((therapist) => ({
@@ -11,28 +14,31 @@ export async function generateStaticParams() {
   }));
 }
 
-// export async function generateStaticParams() {
-//   const response = await fetch(
-//     `${process.env.PAYLOAD_PUBLIC_URL}/api/therapists`
-//   );
-//   const therapists = await response.json();
-
-//   return therapists.docs.map((therapist: { slug: string }) => ({
-//     slug: therapist.slug,
-//   }));
-// }
-
 export default async function Page({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const slug = (await params).slug;
-  const therapist = placeholderTherapists.find((t) => t.slug === slug);
+  const { slug } = await params;
+  const payload = await getPayloadInstance();
+
+  // const therapist = placeholderTherapists.find((t) => t.slug === slug);
+
+  const { docs: [therapist] = [] } = await payload.find({
+    collection: "therapists",
+    where: {
+      slug: {
+        equals: slug,
+      },
+    },
+    limit: 1,
+  });
 
   if (!therapist) {
-    return <div>Therapist not found</div>;
+    return notFound();
   }
+
+  const biographyHTML = await convertLexicalToHTML(therapist.biography);
 
   return (
     // TODO: put padding on container as default
@@ -48,7 +54,7 @@ export default async function Page({
           {"«"} Back to your search
         </Typography>
       </Link>
-      <TherapistProfile therapist={therapist} />
+      <TherapistProfile therapist={therapist} biographyHTML={biographyHTML} />
     </Container>
   );
 }

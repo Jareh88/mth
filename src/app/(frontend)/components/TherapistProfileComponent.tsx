@@ -1,4 +1,3 @@
-"use client";
 import { TherapistProps } from "@frontend/lib/types";
 import {
   Box,
@@ -21,7 +20,12 @@ type TherapistProfileProps = {
   therapist: TherapistProps;
 };
 
-export default function TherapistProfile({ therapist }: TherapistProfileProps) {
+export default function TherapistProfile({
+  therapist,
+  biographyHTML,
+}: TherapistProfileProps) {
+  console.log(biographyHTML);
+  console.log("hello");
   return (
     <Box
       sx={{
@@ -85,9 +89,14 @@ export default function TherapistProfile({ therapist }: TherapistProfileProps) {
             <Typography variant="h4" mb={1}>
               About Me
             </Typography>
-            <Typography variant="body1" mb={2}>
-              {therapist.biography}
-            </Typography>
+            <Typography
+              variant="body1"
+              mb={2}
+              component="div"
+              dangerouslySetInnerHTML={{
+                __html: biographyHTML || "Error rendering bio",
+              }}
+            />
           </Box>
           <Box>
             <Typography variant="h4" mb={1}>
@@ -243,15 +252,11 @@ export default function TherapistProfile({ therapist }: TherapistProfileProps) {
               Qualifications & Accreditations:
             </Typography>
             <ul className="inline-list">
-              {therapist.qualifications_and_accreditations.map(
-                (qualification, key) => {
-                  return (
-                    <li key={key}>
-                      <Typography variant="body2">{qualification}</Typography>
-                    </li>
-                  );
-                }
-              )}
+              {therapist.qualifications_and_accreditations.map((q) => (
+                <li key={q.id}>
+                  <Typography variant="body2">{q.qualification}</Typography>
+                </li>
+              ))}
             </ul>
           </Box>
         </Grid>
