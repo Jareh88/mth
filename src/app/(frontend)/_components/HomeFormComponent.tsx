@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import placeholderOptions from "../helpers/placeholderSpecialisms";
+import placeholderOptions from "../_helpers/placeholderSpecialisms";
 import SearchIcon from "@mui/icons-material/Search";
 import LaptopOutlinedIcon from "@mui/icons-material/LaptopOutlined";
 import ChairOutlinedIcon from "@mui/icons-material/ChairOutlined";

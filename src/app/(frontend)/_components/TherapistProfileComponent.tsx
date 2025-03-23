@@ -1,4 +1,4 @@
-import { TherapistProps } from "@frontend/lib/types";
+import { TherapistProps } from "@frontend/_lib/types";
 import {
   Box,
   Button,
@@ -15,17 +15,13 @@ import WorkingMethodComponent from "./WorkingMethodComponent";
 import PhoneIcon from "@mui/icons-material/Phone";
 import CopyToClipboardButton from "./CopyToClipboardButtonComponent";
 import ShareIcon from "@mui/icons-material/Share";
+import { RichText } from "@payloadcms/richtext-lexical/react";
 
 type TherapistProfileProps = {
   therapist: TherapistProps;
 };
 
-export default function TherapistProfile({
-  therapist,
-  biographyHTML,
-}: TherapistProfileProps) {
-  console.log(biographyHTML);
-  console.log("hello");
+export default function TherapistProfile({ therapist }: TherapistProfileProps) {
   return (
     <Box
       sx={{
@@ -89,14 +85,9 @@ export default function TherapistProfile({
             <Typography variant="h4" mb={1}>
               About Me
             </Typography>
-            <Typography
-              variant="body1"
-              mb={2}
-              component="div"
-              dangerouslySetInnerHTML={{
-                __html: biographyHTML || "Error rendering bio",
-              }}
-            />
+            <Typography variant="body1" mb={2} component="div">
+              <RichText data={therapist.biography} />
+            </Typography>
           </Box>
           <Box>
             <Typography variant="h4" mb={1}>

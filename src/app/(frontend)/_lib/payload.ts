@@ -1,4 +1,4 @@
-"use server"; // Ensures this runs only on the server
+"use server";
 
 import { getPayload, Payload } from "payload";
 import config from "@/payload.config";

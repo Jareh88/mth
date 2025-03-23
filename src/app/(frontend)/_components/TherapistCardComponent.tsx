@@ -15,10 +15,10 @@ import Image from "next/image";
 import Grid from "@mui/material/Grid2";
 
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import { TherapistProps } from "@frontend/lib/types";
+import { TherapistProps } from "@frontend/_lib/types";
 import Link from "next/link";
 import WorkingMethodComponent from "./WorkingMethodComponent";
-import { getBiographyExcerpt } from "../helpers/getBiographyExcerpt";
+import { getBiographyExcerpt } from "../_helpers/getBiographyExcerpt";
 import { CollectionSlug, DataFromCollectionSlug } from "payload";
 
 export default function TherapistCard({

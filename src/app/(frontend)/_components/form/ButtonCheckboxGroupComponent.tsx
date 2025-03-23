@@ -2,7 +2,7 @@ import { Button, Typography } from "@mui/material";
 import React, { ReactElement, useState } from "react";
 
 import Grid from "@mui/material/Grid2";
-import { CheckboxButtonOptions } from "@frontend/lib/types";
+import { CheckboxButtonOptions } from "@frontend/_lib/types";
 
 type CheckboxButtonProps = {
   handleButtonClick: (id: number) => void;

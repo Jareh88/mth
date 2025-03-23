@@ -138,3 +138,11 @@ a {
   letter-spacing: 2px;
   font-size: 14px;
 }
+
+.payload-richtext a {
+  color: blue;
+}
+
+.payload-richtext a:hover {
+  text-decoration: underline;
+}

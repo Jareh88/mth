@@ -14,12 +14,12 @@ import {
 import Grid from "@mui/material/Grid2";
 import ExtensionIcon from "@mui/icons-material/Extension";
 import Link from "next/link";
-import placeholderTherapists from "@frontend/helpers/placeholderTherapists";
+import placeholderTherapists from "@frontend/_helpers/placeholderTherapists";
 import Image from "next/image";
-import WorkingMethodComponent from "@frontend/components/WorkingMethodComponent";
+import WorkingMethodComponent from "@frontend/_components/WorkingMethodComponent";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
-import DividerComponent from "@frontend/components/DividerComponent";
+import DividerComponent from "@frontend/_components/DividerComponent";
 
 export default function About() {
   return (

@@ -1,12 +1,12 @@
-import placeholderTherapists from "@frontend/helpers/placeholderTherapists";
+"use server";
+import placeholderTherapists from "@frontend/_helpers/placeholderTherapists";
 
 import { Container, Typography } from "@mui/material";
-import TherapistProfile from "@frontend/components/TherapistProfileComponent";
+import TherapistProfile from "@frontend/_components/TherapistProfileComponent";
 // import BreadcrumbComponent from "@/components/BreadcrumbComponent";
 import Link from "next/link";
-import { getPayloadInstance } from "@frontend/lib/payload";
+import { getPayloadInstance } from "@frontend/_lib/payload";
 import { notFound } from "next/navigation";
-import { convertLexicalToHTML } from "@payloadcms/richtext-lexical";
 
 export async function generateStaticParams() {
   return placeholderTherapists.map((therapist) => ({
@@ -38,8 +38,6 @@ export default async function Page({
     return notFound();
   }
 
-  const biographyHTML = await convertLexicalToHTML(therapist.biography);
-
   return (
     // TODO: put padding on container as default
     <Container sx={{ py: { xs: 0, lg: 6 } }}>
@@ -54,7 +52,7 @@ export default async function Page({
           {"«"} Back to your search
         </Typography>
       </Link>
-      <TherapistProfile therapist={therapist} biographyHTML={biographyHTML} />
+      <TherapistProfile therapist={therapist} />
     </Container>
   );
 }

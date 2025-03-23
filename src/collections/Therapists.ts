@@ -3,6 +3,9 @@ import slugify from "slugify";
 
 export const Therapists: CollectionConfig = {
   slug: "therapists",
+  admin: {
+    useAsTitle: "name",
+  },
   fields: [
     {
       name: "name",
@@ -41,15 +44,16 @@ export const Therapists: CollectionConfig = {
       type: "textarea",
     },
     {
-      name: "phone number",
+      name: "phone_number",
       type: "text",
     },
     {
-      name: "fee per hour £",
+      label: "Fee per hour (£)",
+      name: "fee_per_hour",
       type: "text",
     },
     {
-      name: "website link",
+      name: "website_link",
       type: "text",
     },
     {

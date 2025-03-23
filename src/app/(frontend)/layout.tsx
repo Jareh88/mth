@@ -7,14 +7,14 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "@frontend/theme";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Box } from "@mui/material";
-import { Header } from "@frontend/components/HeaderComponent";
+import { Header } from "@frontend/_components/HeaderComponent";
 import Image from "next/image";
-import StickyHeader from "@frontend/components/StickyHeader";
-import Footer from "@frontend/components/FooterComponent";
+import StickyHeader from "@frontend/_components/StickyHeader";
+import Footer from "@frontend/_components/FooterComponent";
 import { headers as getHeaders } from "next/headers.js";
 import { getPayload } from "payload";
 import config from "@/payload.config";
-import AdminBar from "./components/AdminBarComponent";
+import AdminBar from "./_components/AdminBarComponent";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],

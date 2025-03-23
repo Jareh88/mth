@@ -2,14 +2,14 @@
 // import Image from "next/image";
 import Grid from "@mui/material/Grid2";
 // import placeholderTherapists from "@frontend/helpers/placeholderTherapists";
-import TherapistCard from "@frontend/components/TherapistCardComponent";
+import TherapistCard from "@frontend/_components/TherapistCardComponent";
 import { Container, Typography } from "@mui/material";
-import GetMatchedFilters from "@frontend/components/GetMatchedFiltersComponent";
+import GetMatchedFilters from "@frontend/_components/GetMatchedFiltersComponent";
 import { Suspense } from "react";
-import HowToComponent from "@frontend/components/HowToComponent";
-import SearchQueryEdit from "@frontend/components/SearchQueryEdit";
-import { getPayloadInstance } from "@frontend/lib/payload";
-import placeholderTherapists from "../helpers/placeholderTherapists";
+import HowToComponent from "@frontend/_components/HowToComponent";
+import SearchQueryEdit from "@frontend/_components/SearchQueryEdit";
+import { getPayloadInstance } from "@frontend/_lib/payload";
+import placeholderTherapists from "../_helpers/placeholderTherapists";
 
 export default async function Therapists() {
   const payload = await getPayloadInstance();
@@ -75,11 +75,11 @@ export default async function Therapists() {
           ) : (
             <p>No therapists found.</p>
           )}
-          {placeholderTherapists.map((placeholderTherapist, index) => {
+          {/* {placeholderTherapists.map((placeholderTherapist, index) => {
             return (
               <TherapistCard key={index} therapist={placeholderTherapist} />
             );
-          })}
+          })} */}
         </Grid>
       </Container>
     </Suspense>

@@ -1,6 +1,6 @@
 import { Box, Checkbox, FormControlLabel } from "@mui/material";
 import { useState } from "react";
-import placeholderTherapyTypes from "@frontend/helpers/placeholderTherapyTypes";
+import placeholderTherapyTypes from "@frontend/_helpers/placeholderTherapyTypes";
 
 function NestedCheckboxGroupChildren({ options, checked, handleChange }) {
   return (
