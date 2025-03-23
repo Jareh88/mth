@@ -6,23 +6,97 @@
  * and re-run `payload generate:types` to regenerate this file.
  */
 
+/**
+ * Supported timezones in IANA format.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "supportedTimezones".
+ */
+export type SupportedTimezones =
+  | 'Pacific/Midway'
+  | 'Pacific/Niue'
+  | 'Pacific/Honolulu'
+  | 'Pacific/Rarotonga'
+  | 'America/Anchorage'
+  | 'Pacific/Gambier'
+  | 'America/Los_Angeles'
+  | 'America/Tijuana'
+  | 'America/Denver'
+  | 'America/Phoenix'
+  | 'America/Chicago'
+  | 'America/Guatemala'
+  | 'America/New_York'
+  | 'America/Bogota'
+  | 'America/Caracas'
+  | 'America/Santiago'
+  | 'America/Buenos_Aires'
+  | 'America/Sao_Paulo'
+  | 'Atlantic/South_Georgia'
+  | 'Atlantic/Azores'
+  | 'Atlantic/Cape_Verde'
+  | 'Europe/London'
+  | 'Europe/Berlin'
+  | 'Africa/Lagos'
+  | 'Europe/Athens'
+  | 'Africa/Cairo'
+  | 'Europe/Moscow'
+  | 'Asia/Riyadh'
+  | 'Asia/Dubai'
+  | 'Asia/Baku'
+  | 'Asia/Karachi'
+  | 'Asia/Tashkent'
+  | 'Asia/Calcutta'
+  | 'Asia/Dhaka'
+  | 'Asia/Almaty'
+  | 'Asia/Jakarta'
+  | 'Asia/Bangkok'
+  | 'Asia/Shanghai'
+  | 'Asia/Singapore'
+  | 'Asia/Tokyo'
+  | 'Asia/Seoul'
+  | 'Australia/Brisbane'
+  | 'Australia/Sydney'
+  | 'Pacific/Guam'
+  | 'Pacific/Noumea'
+  | 'Pacific/Auckland'
+  | 'Pacific/Fiji';
+
 export interface Config {
   auth: {
     users: UserAuthOperations;
   };
+  blocks: {};
   collections: {
+    pages: Page;
+    therapists: Therapist;
     users: User;
     media: Media;
+    'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
+  collectionsJoins: {};
+  collectionsSelect: {
+    pages: PagesSelect<false> | PagesSelect<true>;
+    therapists: TherapistsSelect<false> | TherapistsSelect<true>;
+    users: UsersSelect<false> | UsersSelect<true>;
+    media: MediaSelect<false> | MediaSelect<true>;
+    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
+    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
+    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
+  };
   db: {
-    defaultIDType: string;
+    defaultIDType: number;
   };
   globals: {};
+  globalsSelect: {};
   locale: null;
   user: User & {
     collection: 'users';
+  };
+  jobs: {
+    tasks: unknown;
+    workflows: unknown;
   };
 }
 export interface UserAuthOperations {
@@ -45,27 +119,93 @@ export interface UserAuthOperations {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
+ * via the `definition` "pages".
  */
-export interface User {
-  id: string;
+export interface Page {
+  id: number;
+  title: string;
+  slug?: string | null;
+  layout?:
+    | (
+        | {
+            heading: string;
+            paragraph: string;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'hero';
+          }
+        | {
+            icon_one?: (number | null) | Media;
+            title_one: string;
+            paragraph_one: string;
+            link_url_one?: string | null;
+            icon_two?: (number | null) | Media;
+            title_two: string;
+            paragraph_two: string;
+            link_url_two?: string | null;
+            icon_three?: (number | null) | Media;
+            title_three: string;
+            paragraph_three: string;
+            link_url_three?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'three-column';
+          }
+        | {
+            heading: string;
+            content: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            highlighted_therapist?: (number | null) | Therapist;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'content-|-get-matched-and-links';
+          }
+        | {
+            heading: string;
+            content: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            highlighted_therapist?: (number | null) | Therapist;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'get-matched-and-links-|-content';
+          }
+      )[]
+    | null;
   updatedAt: string;
   createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  password?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
  */
 export interface Media {
-  id: string;
+  id: number;
   alt: string;
   updatedAt: string;
   createdAt: string;
@@ -81,13 +221,404 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "therapists".
+ */
+export interface Therapist {
+  id: number;
+  name: string;
+  email: string;
+  profession: string;
+  biography?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  photo?: (number | null) | Media;
+  communication_method?: ('In Person' | 'Online')[] | null;
+  address?: string | null;
+  phone_number?: string | null;
+  fee_per_hour?: string | null;
+  website_link?: string | null;
+  qualifications_and_accreditations?:
+    | {
+        qualification?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  'age range'?: ('14-18' | '18-65' | '65+')[] | null;
+  faith?:
+    | (
+        | 'African Traditional & Diasporic'
+        | 'Agnostic'
+        | 'Atheist'
+        | "Baha'i"
+        | 'Buddhism'
+        | 'Cao Dai'
+        | 'Chinese traditional religion'
+        | 'Christianity'
+        | 'Hinduism'
+        | 'Islam'
+        | 'Jainism'
+        | 'Juche'
+        | 'Judaism'
+        | 'Neo-Paganism'
+        | 'Non-religious'
+        | 'Rastafarianism'
+        | 'Secular'
+        | 'Shinto'
+        | 'Sikhism'
+        | 'Spiritism'
+        | 'Tenrikyo'
+        | 'Unitarian-Universalism'
+        | 'Zoroastrianism'
+        | 'Primal-indigenous'
+        | 'Other'
+      )
+    | null;
+  insurances?:
+    | {
+        insurance?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  languges_spoken?:
+    | (
+        | 'English'
+        | 'Spanish'
+        | 'French'
+        | 'German'
+        | 'Mandarin'
+        | 'Cantonese'
+        | 'Hindi'
+        | 'Bengali'
+        | 'Punjabi'
+        | 'Urdu'
+        | 'Portuguese'
+        | 'Arabic'
+        | 'Russian'
+        | 'Italian'
+        | 'Japanese'
+        | 'Korean'
+        | 'Swedish'
+        | 'Dutch'
+        | 'Turkish'
+        | 'Polish'
+        | 'Tamil'
+        | 'Gujarati'
+        | 'Malay'
+        | 'Greek'
+        | 'Vietnamese'
+        | 'Thai'
+        | 'Farsi'
+        | 'Hebrew'
+        | 'Swahili'
+        | 'Zulu'
+        | 'Afrikaans'
+        | 'Norwegian'
+        | 'Danish'
+        | 'Finnish'
+        | 'Hungarian'
+        | 'Czech'
+        | 'Slovak'
+        | 'Romanian'
+        | 'Bulgarian'
+        | 'Serbian'
+        | 'Croatian'
+        | 'Bosnian'
+        | 'Albanian'
+        | 'Ukrainian'
+        | 'Latvian'
+        | 'Lithuanian'
+        | 'Estonian'
+        | 'Welsh'
+        | 'Irish'
+        | 'Scottish Gaelic'
+      )[]
+    | null;
+  sexuality?: ('Heterosexual' | 'Bisexual' | 'LGBTQ+' | 'Prefer not to state') | null;
+  ethnicity?:
+    | (
+        | 'African / Black / Afro-Carribean'
+        | 'Asian'
+        | 'Arab / Middle-Eastern'
+        | 'Hispanic / Latino / Latinx'
+        | 'European / White'
+        | 'Mixed / Multi-ethnic'
+        | 'Jewish'
+        | 'Other'
+      )
+    | null;
+  how_we_start?: string | null;
+  therapy_types_offered?:
+    | (
+        | 'Accelerated experiential dynamic psychotherapy (AEDP)'
+        | 'Acceptance and commitment therapy (ACT)'
+        | 'Adlerian therapy'
+        | 'Animal-assisted therapy'
+        | 'Applied psychology'
+        | 'Art therapy'
+        | 'Attachment-based therapy'
+        | 'Behavioural therapy'
+        | 'Bibliotherapy'
+        | 'Coaching'
+        | 'Cognitive analytic therapy (CAT)'
+        | 'Cognitive behavioural therapy (CBT)'
+        | 'Cognitive processing therapy (CPT)'
+        | 'Cognitive stimulation therapy'
+        | 'Cognitive therapy'
+        | 'Compassion-focused therapy'
+        | 'Core process psychotherapy'
+        | 'Couples therapy'
+        | 'Dance therapy'
+        | 'Dialectical behavioural therapy (DBT)'
+        | 'Dynamic interpersonal therapy'
+        | 'Eclectic counselling'
+        | 'EMDR'
+        | 'Emotion-focused therapy'
+        | 'Emotional freedom technique (EFT)'
+        | 'Emotionally focused couple therapy (EFT)'
+        | 'Equine therapy'
+        | 'Existential therapy'
+        | 'Experiential therapy'
+        | 'Exposure and response prevention (ERP)'
+        | 'Family Therapy'
+        | 'Gestalt therapy'
+        | 'Group therapy'
+        | 'Human Givens psychotherapy'
+        | 'Humanistic therapy'
+        | 'Hypnotherapy'
+        | 'Imago relationship therapy (IRT)'
+        | 'Integrative counselling'
+        | 'Intercultural therapy'
+        | 'Internal family systems therapy (IFS)'
+        | 'Interpersonal therapy'
+        | 'Jungian therapy'
+        | 'Mentalisation-based therapy'
+        | 'Mindfulness'
+        | 'Motivational interviewing (MI)'
+        | 'Narrative therapy'
+        | 'Neuro-linguistic programming (NLP)'
+        | 'Neurofeedback'
+        | 'Person-centred therapy'
+        | 'Positive psychology'
+        | 'Prolonged exposure therapy (PET)'
+        | 'Psychoanalysis'
+        | 'Psychoanalytic therapy'
+        | 'Psychodrama'
+        | 'Psychodynamic therapy'
+        | 'Psychosexual therapy'
+        | 'Psychosynthesis'
+        | 'Rational emotive behaviour therapy (REBT)'
+        | 'Reality therapy'
+        | 'Relational therapy'
+        | 'Schema therapy'
+        | 'Social recovery therapy'
+        | 'Solution focused brief therapy'
+        | 'Somatic therapy'
+        | 'Strength-based therapy'
+        | 'Structural family therapy'
+        | 'Systemic therapy'
+        | 'The Gottman Method'
+        | 'Transactional analysis'
+        | 'Transpersonal psychology'
+        | 'Trauma-focused CBT'
+        | 'Walk and talk therapy'
+      )[]
+    | null;
+  specialisms?:
+    | (
+        | 'Abortion'
+        | 'Abuse'
+        | 'Addiction'
+        | 'ADHD'
+        | 'Adoption counselling for adults'
+        | 'Affairs and betrayals'
+        | 'Alcoholism'
+        | 'Anger management'
+        | 'Anorexia nervosa'
+        | 'Antisocial personality disorder'
+        | 'Anxiety'
+        | 'ARFID'
+        | 'Attachment disorder in children'
+        | 'Attachment disorder'
+        | 'Autism'
+        | 'Avoidant personality disorder'
+        | 'Baby loss'
+        | 'Behaviour problems'
+        | 'Bereavement'
+        | 'Binge-eating disorder'
+        | 'Bipolar disorder'
+        | 'Blended family'
+        | 'Boarding school syndrome'
+        | 'Body dysmorphic disorder (BDD)'
+        | 'Borderline personality disorder (BPD)'
+        | 'Bulimia nervosa'
+        | 'Bullying'
+        | 'Burnout'
+        | 'Cancer'
+        | 'Career counselling'
+        | 'Carer support'
+        | 'Child counselling'
+        | 'Childhood bereavement'
+        | 'Childhood bullying'
+        | 'Childless not by choice'
+        | 'Children’s learning difficulties'
+        | 'Chronic fatigue syndrome/ME'
+        | 'Chronic illness'
+        | 'Climate and eco-anxiety'
+        | 'Dementia'
+        | 'Dependent personality disorder'
+        | 'Depression and anxiety in children'
+        | 'Depression'
+        | 'Disabilities'
+        | 'Discrimination'
+        | 'Dissociation'
+        | 'Domestic abuse'
+        | 'Drug addiction'
+        | 'Dyslexia'
+        | 'Dyspraxia'
+        | 'Eating disorders'
+        | 'Emotional abuse'
+        | 'Family issues'
+        | 'Gambling'
+        | 'Gender dysphoria'
+        | 'Generalised anxiety disorder (GAD)'
+        | 'Health anxiety'
+        | 'Hearing voices'
+        | 'High sensitivity'
+        | 'Histrionic personality disorder'
+        | 'HIV/AIDS'
+        | 'Hoarding'
+        | 'Infertility'
+        | 'Internet addiction'
+        | 'Jealousy'
+        | 'Kink-aware therapy'
+        | 'Learning difficulties'
+        | 'Learning disabilities'
+        | 'LGBTQ+ counselling'
+        | 'Loneliness'
+        | 'Low self-confidence'
+        | 'Low self-esteem'
+        | 'Mental health'
+        | 'Miscarriage'
+        | 'Money'
+        | 'Narcissistic abuse'
+        | 'Narcissistic personality disorder'
+        | 'Neurodiversity'
+        | 'Non-monogamy'
+        | 'Obsessive compulsive disorder (OCD)'
+        | 'Obsessive-compulsive personality disorder'
+        | "Older people's counselling"
+        | 'Panic attacks'
+        | 'Paranoia'
+        | 'Paranoid personality disorder'
+        | 'Passive-aggressive behaviour'
+        | 'Perfectionism'
+        | 'Personality disorders'
+        | 'Phobias'
+        | 'Physical abuse'
+        | 'Post-traumatic stress disorder (PTSD)'
+        | 'Postnatal depression'
+        | 'Psychosis'
+        | 'Race and racial identity'
+        | 'Racism'
+        | 'Redundancy'
+        | 'Relationship problems'
+        | 'Schizoid personality disorder'
+        | 'Schizophrenia'
+        | 'Schizotypal personality disorder'
+        | 'Seasonal affective disorder (SAD)'
+        | 'Self-harm'
+        | 'Separation and divorce'
+        | 'Separation anxiety'
+        | 'Sex addiction'
+        | 'Sex problems'
+        | 'Sexual abuse'
+        | 'Sexual assault'
+        | 'Smoking cessation'
+        | 'Social anxiety'
+        | 'Spirituality'
+        | 'Stress'
+        | 'Suicidal thoughts'
+        | "Tourette's syndrome"
+        | 'Trauma'
+        | 'Trichotillomania'
+        | 'Work-related stress'
+        | 'Young carers'
+        | "Young people's counselling"
+      )[]
+    | null;
+  slug?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users".
+ */
+export interface User {
+  id: number;
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-locked-documents".
+ */
+export interface PayloadLockedDocument {
+  id: number;
+  document?:
+    | ({
+        relationTo: 'pages';
+        value: number | Page;
+      } | null)
+    | ({
+        relationTo: 'therapists';
+        value: number | Therapist;
+      } | null)
+    | ({
+        relationTo: 'users';
+        value: number | User;
+      } | null)
+    | ({
+        relationTo: 'media';
+        value: number | Media;
+      } | null);
+  globalSlug?: string | null;
+  user: {
+    relationTo: 'users';
+    value: number | User;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: string;
+  id: number;
   user: {
     relationTo: 'users';
-    value: string | User;
+    value: number | User;
   };
   key?: string | null;
   value?:
@@ -107,11 +638,173 @@ export interface PayloadPreference {
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: string;
+  id: number;
   name?: string | null;
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  layout?:
+    | T
+    | {
+        hero?:
+          | T
+          | {
+              heading?: T;
+              paragraph?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'three-column'?:
+          | T
+          | {
+              icon_one?: T;
+              title_one?: T;
+              paragraph_one?: T;
+              link_url_one?: T;
+              icon_two?: T;
+              title_two?: T;
+              paragraph_two?: T;
+              link_url_two?: T;
+              icon_three?: T;
+              title_three?: T;
+              paragraph_three?: T;
+              link_url_three?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'content-|-get-matched-and-links'?:
+          | T
+          | {
+              heading?: T;
+              content?: T;
+              highlighted_therapist?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'get-matched-and-links-|-content'?:
+          | T
+          | {
+              heading?: T;
+              content?: T;
+              highlighted_therapist?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "therapists_select".
+ */
+export interface TherapistsSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  profession?: T;
+  biography?: T;
+  photo?: T;
+  communication_method?: T;
+  address?: T;
+  phone_number?: T;
+  fee_per_hour?: T;
+  website_link?: T;
+  qualifications_and_accreditations?:
+    | T
+    | {
+        qualification?: T;
+        id?: T;
+      };
+  'age range'?: T;
+  faith?: T;
+  insurances?:
+    | T
+    | {
+        insurance?: T;
+        id?: T;
+      };
+  languges_spoken?: T;
+  sexuality?: T;
+  ethnicity?: T;
+  how_we_start?: T;
+  therapy_types_offered?: T;
+  specialisms?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users_select".
+ */
+export interface UsersSelect<T extends boolean = true> {
+  updatedAt?: T;
+  createdAt?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media_select".
+ */
+export interface MediaSelect<T extends boolean = true> {
+  alt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-locked-documents_select".
+ */
+export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
+  document?: T;
+  globalSlug?: T;
+  user?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-preferences_select".
+ */
+export interface PayloadPreferencesSelect<T extends boolean = true> {
+  user?: T;
+  key?: T;
+  value?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-migrations_select".
+ */
+export interface PayloadMigrationsSelect<T extends boolean = true> {
+  name?: T;
+  batch?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
