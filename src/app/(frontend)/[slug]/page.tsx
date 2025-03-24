@@ -6,6 +6,8 @@ import { getPayload, type RequiredDataFromCollectionSlug } from "payload";
 import { draftMode } from "next/headers";
 import React, { cache } from "react";
 import { generateMeta } from "@frontend/_utils/generateMeta";
+import { RenderBlocks } from "@frontend/_components/RenderBlocks";
+import { LivePreviewListener } from "@frontend/_components/LivePreviewListener";
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise });
@@ -39,13 +41,15 @@ type Args = {
 
 export default async function Page({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode();
-  const { slug = "home" } = await paramsPromise;
+  const { slug = "" } = await paramsPromise;
   const url = "/" + slug;
 
   let page: RequiredDataFromCollectionSlug<"pages"> | null;
 
+  const slugToQuery = slug === "" ? "homepage" : slug;
+
   page = await queryPageBySlug({
-    slug,
+    slug: slugToQuery,
   });
 
   if (!page) {

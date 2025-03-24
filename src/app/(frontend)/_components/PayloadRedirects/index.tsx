@@ -1,9 +1,9 @@
 import type React from "react";
-import type { Page /*, Post*/ } from "@/payload-types";
+import type { Page, Resource } from "@/payload-types";
 
-import { getCachedRedirects } from "@/utilities/getRedirects";
 import { notFound, redirect } from "next/navigation";
 import { getCachedDocument } from "@frontend/_utils/getDocument";
+import { getCachedRedirects } from "@frontend/_utils/getRedirects";
 
 interface Props {
   disableNotFound?: boolean;
@@ -30,8 +30,9 @@ export const PayloadRedirects: React.FC<Props> = async ({
       const collection = redirectItem.to?.reference?.relationTo;
       const id = redirectItem.to?.reference?.value;
 
-      const document = (await getCachedDocument(collection, id)()) as Page;
-      // | Post;
+      const document = (await getCachedDocument(collection, id)()) as
+        | Page
+        | Resource;
       redirectUrl = `${redirectItem.to?.reference?.relationTo !== "pages" ? `/${redirectItem.to?.reference?.relationTo}` : ""}/${
         document?.slug
       }`;
