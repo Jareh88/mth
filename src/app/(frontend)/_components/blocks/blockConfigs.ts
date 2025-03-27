@@ -5,6 +5,7 @@ export const HeroBlockConfig: Block = {
   interfaceName: "HeroBlock",
   fields: [
     { name: "heading", type: "text", required: true },
+    { name: "subheading", type: "text" },
     { name: "paragraph", type: "textarea", required: true },
   ],
 };
@@ -13,6 +14,14 @@ export const ThreeColumnBlockConfig: Block = {
   slug: "three-column",
   interfaceName: "ThreeColumnBlock",
   fields: [
+    {
+      name: "heading",
+      type: "text",
+    },
+    {
+      name: "subheading",
+      type: "text",
+    },
     {
       label: "Icon Left Column",
       name: "icon_one",

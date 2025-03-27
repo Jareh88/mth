@@ -19,8 +19,18 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import placeholderTherapists from "@frontend/_helpers/placeholderTherapists";
 import DividerComponent from "../DividerComponent";
+import TherapistCardComponent from "../TherapistCardComponent";
+import { getPayloadInstance } from "../../_lib/payload";
 
-export const SidebarContentBlock = () => {
+export async function SidebarContentBlock(props) {
+  const payload = await getPayloadInstance();
+
+  const { heading, content, highlighted_therapist } = props;
+  const therapist = await payload.findByID({
+    collection: "therapists",
+    id: highlighted_therapist,
+  });
+
   return (
     <>
       <Container sx={{ py: { xs: 0, lg: 6 } }}>
@@ -67,130 +77,7 @@ export const SidebarContentBlock = () => {
                 One of our Partnered Specialists
               </Typography>
               {/* TODO sort this component out */}
-              <Card sx={{ height: "100%" }} className="therapist-card">
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    height: "100%",
-                    p: 1,
-                  }}
-                >
-                  <Link href={`/therapists/${placeholderTherapists[3].slug}`}>
-                    <CardContent>
-                      {/* Name and meta info */}
-                      <Grid container spacing={1} sx={{ minHeight: "124px" }}>
-                        <Grid size={3}>
-                          {/* <Image src={placeholderTherapists[3].profile_image} width="80" height="80" /> */}
-                          <Image
-                            src="https://place-hold.it/80x80"
-                            width="80"
-                            height="80"
-                            alt={`Profile image for ${placeholderTherapists[3].name}`}
-                            className="profile-img"
-                          />
-                        </Grid>
-
-                        <Grid size={9} sx={{ mb: 1 }}>
-                          <Typography
-                            variant="h4"
-                            component="h3"
-                            align="center"
-                          >
-                            {placeholderTherapists[3].name}
-                          </Typography>
-                          <Typography
-                            variant="body2"
-                            component="h4"
-                            align="center"
-                          >
-                            {placeholderTherapists[3].profession}
-                          </Typography>
-
-                          <Box justifyItems={"center"} sx={{ lineHeight: 1 }}>
-                            <Box className="flex-row">
-                              <WorkingMethodComponent
-                                status={
-                                  placeholderTherapists[3].online_or_in_person
-                                }
-                              />
-                              <Typography
-                                variant="body2"
-                                component="h4"
-                                sx={{ pl: 1 }}
-                              >
-                                {placeholderTherapists[3].online_or_in_person}
-                              </Typography>
-                            </Box>
-                            {placeholderTherapists[3].address && (
-                              <Box className="flex-row">
-                                <LocationOnOutlinedIcon />
-                                <Typography
-                                  variant="body2"
-                                  component="h4"
-                                  sx={{ pl: 1 }}
-                                >
-                                  {placeholderTherapists[3].address}
-                                </Typography>
-                              </Box>
-                            )}
-                          </Box>
-                        </Grid>
-                      </Grid>
-
-                      {/* Specialisms and bio */}
-                      <Box sx={{ minHeight: "58px" }}>
-                        <Typography
-                          variant="h6"
-                          component="h4"
-                          sx={{ lineHeight: 1.5 }}
-                        >
-                          Specialisms:
-                        </Typography>
-                        <Typography variant="body2" sx={{ lineHeight: 1.5 }}>
-                          {placeholderTherapists[3].specialisms.join(", ")}
-                        </Typography>
-                      </Box>
-                      <Divider
-                        sx={{
-                          opacity: 0.5,
-                          borderColor: "#0A3449",
-                          borderStyle: "dashed",
-                          mb: 2,
-                          width: "50%",
-                          mx: "auto",
-                        }}
-                      />
-                      <Typography
-                        variant="body1"
-                        // noWrap
-                        sx={{
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                          display: "-webkit-box",
-                          WebkitLineClamp: "4",
-                          WebkitBoxOrient: "vertical",
-                        }}
-                      >
-                        {placeholderTherapists[3].biography}
-                      </Typography>
-                    </CardContent>
-                  </Link>
-                  <CardActions className="no-parent-hover">
-                    <Link href={`/therapists/${placeholderTherapists[3].slug}`}>
-                      <Button variant="contained" className="view-profile-btn">
-                        View More Like Me
-                      </Button>
-                    </Link>
-                    <Tooltip title="Bookmark">
-                      <IconButton disableRipple className="bookmark-btn">
-                        <BookmarkIcon />
-                      </IconButton>
-                    </Tooltip>
-                  </CardActions>
-                </Box>
-              </Card>
+              <TherapistCardComponent therapist={therapist} />
             </Box>
           </Grid>
           <Grid size={8} sx={{ color: "text.secondary", pl: 8 }}>
@@ -291,4 +178,4 @@ export const SidebarContentBlock = () => {
       <DividerComponent width="100%" color="text.secondary" sx={{ mb: 2 }} />
     </>
   );
-};
+}

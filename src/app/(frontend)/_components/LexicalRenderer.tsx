@@ -21,7 +21,7 @@ export default function LexicalRenderer({ content }: LexicalRendererProps) {
   // We'll pass the entire JSON as the "editorState" in initialConfig.
   // Mark the editor as non-editable (read-only).
   const initialConfig = {
-    namespace: "TherapistBio",
+    namespace: "MyEditor",
     editable: false,
     editorState: JSON.stringify(content),
     theme: {

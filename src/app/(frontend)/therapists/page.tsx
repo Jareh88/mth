@@ -1,15 +1,19 @@
-"use server"; // Ensures this component is server-side
 // import Image from "next/image";
 import Grid from "@mui/material/Grid2";
 // import placeholderTherapists from "@frontend/helpers/placeholderTherapists";
 import TherapistCard from "@frontend/_components/TherapistCardComponent";
 import { Container, Typography } from "@mui/material";
 import GetMatchedFilters from "@frontend/_components/GetMatchedFiltersComponent";
-import { Suspense } from "react";
+import { cache, Suspense } from "react";
 import HowToComponent from "@frontend/_components/HowToComponent";
 import SearchQueryEdit from "@frontend/_components/SearchQueryEdit";
 import { getPayloadInstance } from "@frontend/_lib/payload";
-import placeholderTherapists from "../_helpers/placeholderTherapists";
+import { Metadata } from "next";
+import { PageArgs } from "../_helpers/types";
+import { generateMeta } from "../_utils/generateMeta";
+import { draftMode } from "next/headers";
+import { getPayload } from "payload";
+import configPromise from "@payload-config";
 
 export default async function Therapists() {
   const payload = await getPayloadInstance();
@@ -70,7 +74,9 @@ export default async function Therapists() {
         <Grid container spacing={1}>
           {therapists?.length ? (
             therapists.map((therapist, index) => (
-              <TherapistCard key={index} therapist={therapist} />
+              <Grid key={index} size={{ xs: 12, md: 6, lg: 4 }}>
+                <TherapistCard therapist={therapist} />
+              </Grid>
             ))
           ) : (
             <p>No therapists found.</p>
@@ -84,4 +90,18 @@ export default async function Therapists() {
       </Container>
     </Suspense>
   );
+}
+
+export async function generateMetadata() {
+  const page = {
+    meta: {
+      title: "Male Therapists & Counsellors Near You | Men's Therapy Hub",
+      description:
+        "Get matched to a qualified professional near you. Male therapists and counsellors specialising in men's mental health, couples therapy, and more.",
+      // image: ,
+      slug: "/therapists",
+    },
+  };
+
+  return generateMeta({ doc: page });
 }

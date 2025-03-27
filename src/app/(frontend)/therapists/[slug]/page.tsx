@@ -1,6 +1,3 @@
-"use server";
-import placeholderTherapists from "@frontend/_helpers/placeholderTherapists";
-
 import { Container, Typography } from "@mui/material";
 import TherapistProfile from "@frontend/_components/TherapistProfileComponent";
 // import BreadcrumbComponent from "@/components/BreadcrumbComponent";
@@ -8,10 +5,24 @@ import Link from "next/link";
 import { getPayloadInstance } from "@frontend/_lib/payload";
 import { notFound } from "next/navigation";
 
+// 1) Synchronously typed params for Next 15 (not a Promise)
 export async function generateStaticParams() {
-  return placeholderTherapists.map((therapist) => ({
-    slug: therapist.slug,
+  const payload = await getPayloadInstance();
+
+  // fetch all therapists from Payload
+  const { docs: therapists } = await payload.find({
+    collection: "therapists",
+    pagination: false,
+    // Set filter finds here?
+  });
+
+  // map them to array of { slug: string }
+  const params = therapists.map((doc) => ({
+    slug: doc.slug,
   }));
+
+  // Return them so Next knows which routes to build at compile time
+  return params;
 }
 
 export default async function Page({

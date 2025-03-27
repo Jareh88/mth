@@ -19,9 +19,7 @@ import { Page, Resource } from "@/payload-types";
 import { getServerSideURL } from "@frontend/_utils/getURL";
 
 const generateTitle: GenerateTitle<Resource | Page> = ({ doc }) => {
-  return doc?.title
-    ? `${doc.title} | Payload Website Template`
-    : "Payload Website Template";
+  return doc?.title ? `${doc.title} | Men's Therapy Hub` : "Men's Therapy Hub";
 };
 
 const generateURL: GenerateURL<Resource | Page> = ({ doc }) => {

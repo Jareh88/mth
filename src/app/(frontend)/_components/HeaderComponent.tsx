@@ -24,11 +24,11 @@ export const Header = ({ isSticky = false }) => {
             priority
           />
         </Link>
-        {/* <Link href="/resources"> */}
-        <Button className="header-link" size="medium">
-          Resources
-        </Button>
-        {/* </Link> */}
+        <Link href="/resources">
+          <Button className="header-link" size="medium">
+            Resources
+          </Button>
+        </Link>
         <Link href="/therapists">
           <Button
             variant="contained"

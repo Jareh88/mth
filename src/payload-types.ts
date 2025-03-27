@@ -166,6 +166,7 @@ export interface Page {
  */
 export interface HeroBlock {
   heading: string;
+  subheading?: string | null;
   paragraph: string;
   id?: string | null;
   blockName?: string | null;
@@ -176,6 +177,8 @@ export interface HeroBlock {
  * via the `definition` "ThreeColumnBlock".
  */
 export interface ThreeColumnBlock {
+  heading?: string | null;
+  subheading?: string | null;
   icon_one?: (number | null) | Media;
   title_one: string;
   paragraph_one: string;
@@ -1158,6 +1161,7 @@ export interface PagesSelect<T extends boolean = true> {
  */
 export interface HeroBlockSelect<T extends boolean = true> {
   heading?: T;
+  subheading?: T;
   paragraph?: T;
   id?: T;
   blockName?: T;
@@ -1167,6 +1171,8 @@ export interface HeroBlockSelect<T extends boolean = true> {
  * via the `definition` "ThreeColumnBlock_select".
  */
 export interface ThreeColumnBlockSelect<T extends boolean = true> {
+  heading?: T;
+  subheading?: T;
   icon_one?: T;
   title_one?: T;
   paragraph_one?: T;

@@ -2,10 +2,10 @@ import React, { Fragment } from "react";
 
 import type { Page } from "@/payload-types";
 
-import { HeroBlock } from "./blocks/Hero";
-import { ThreeColumnBlock } from "./blocks/ThreeColumn";
-import { ContentSidebarBlock } from "./blocks/ContentSidebar";
-import { SidebarContentBlock } from "./blocks/SidebarContent";
+import { HeroBlock } from "./Hero";
+import { ThreeColumnBlock } from "./ThreeColumn";
+import { ContentSidebarBlock } from "./ContentSidebar";
+import { SidebarContentBlock } from "./SidebarContent";
 
 const blockComponents = {
   hero: HeroBlock,
@@ -16,9 +16,7 @@ const blockComponents = {
 
 export const RenderBlocks: React.FC<{
   blocks: Page["layout"][0][];
-}> = (props) => {
-  const { blocks } = props;
-
+}> = ({ blocks }) => {
   const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0;
 
   if (hasBlocks) {
@@ -28,7 +26,9 @@ export const RenderBlocks: React.FC<{
           const { blockType } = block;
 
           if (blockType && blockType in blockComponents) {
-            {/* @ts-expect-error there may be some mismatch between the expected types here */}
+            {
+              /* @ts-expect-error there may be some mismatch between the expected types here */
+            }
             const Block = blockComponents[blockType];
 
             if (Block) {

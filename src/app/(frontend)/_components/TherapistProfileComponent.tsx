@@ -16,6 +16,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import CopyToClipboardButton from "./CopyToClipboardButtonComponent";
 import ShareIcon from "@mui/icons-material/Share";
 import { RichText } from "@payloadcms/richtext-lexical/react";
+import { ImageWithPlaceholder } from "./ImageWithPlaceholderComponent";
 
 type TherapistProfileProps = {
   therapist: TherapistProps;
@@ -36,12 +37,11 @@ export default function TherapistProfile({ therapist }: TherapistProfileProps) {
           <Box mb={2}>
             <Grid container>
               <Grid size={3}>
-                <Image
-                  src="https://place-hold.it/160x160"
-                  width="160"
-                  height="160"
-                  alt={`Profile image for ${therapist.name}`}
+                <ImageWithPlaceholder
+                  imageObj={therapist.photo}
                   className="profile-img"
+                  width={"160"}
+                  height={"160"}
                 />
               </Grid>
               <Grid size={9} sx={{ alignContent: "center" }}>

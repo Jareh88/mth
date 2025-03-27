@@ -6,8 +6,9 @@ import { getPayload, type RequiredDataFromCollectionSlug } from "payload";
 import { draftMode } from "next/headers";
 import React, { cache } from "react";
 import { generateMeta } from "@frontend/_utils/generateMeta";
-import { RenderBlocks } from "@frontend/_components/RenderBlocks";
+import { RenderBlocks } from "@frontend/_components/blocks/RenderBlocks";
 import { LivePreviewListener } from "@frontend/_components/LivePreviewListener";
+import { PageArgs } from "../_helpers/types";
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise });
@@ -33,13 +34,7 @@ export async function generateStaticParams() {
   return params;
 }
 
-type Args = {
-  params: Promise<{
-    slug?: string;
-  }>;
-};
-
-export default async function Page({ params: paramsPromise }: Args) {
+export default async function Page({ params: paramsPromise }: PageArgs) {
   const { isEnabled: draft } = await draftMode();
   const { slug = "" } = await paramsPromise;
   const url = "/" + slug;
@@ -51,7 +46,7 @@ export default async function Page({ params: paramsPromise }: Args) {
   page = await queryPageBySlug({
     slug: slugToQuery,
   });
-
+  console.log(page);
   if (!page) {
     return <PayloadRedirects url={url} />;
   }
