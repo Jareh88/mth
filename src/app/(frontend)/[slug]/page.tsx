@@ -8,7 +8,7 @@ import React, { cache } from "react";
 import { generateMeta } from "@frontend/_utils/generateMeta";
 import { RenderBlocks } from "@frontend/_components/blocks/RenderBlocks";
 import { LivePreviewListener } from "@frontend/_components/LivePreviewListener";
-import { PageArgs } from "../_helpers/types";
+import { PageArgs } from "../_lib/pageArgs";
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise });
@@ -46,7 +46,7 @@ export default async function Page({ params: paramsPromise }: PageArgs) {
   page = await queryPageBySlug({
     slug: slugToQuery,
   });
-  console.log(page);
+
   if (!page) {
     return <PayloadRedirects url={url} />;
   }
@@ -68,8 +68,8 @@ export default async function Page({ params: paramsPromise }: PageArgs) {
 
 export async function generateMetadata({
   params: paramsPromise,
-}: Args): Promise<Metadata> {
-  const { slug = "home" } = await paramsPromise;
+}: PageArgs): Promise<Metadata> {
+  const { slug = "homepage" } = await paramsPromise;
   const page = await queryPageBySlug({
     slug,
   });
@@ -81,7 +81,6 @@ const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
   const { isEnabled: draft } = await draftMode();
 
   const payload = await getPayload({ config: configPromise });
-
   const result = await payload.find({
     collection: "pages",
     draft,

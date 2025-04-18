@@ -146,3 +146,17 @@ a {
 .payload-richtext a:hover {
   text-decoration: underline;
 }
+
+.site-footer {
+  /* position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0; */
+  background-color: rgba(10, 52, 73, 0.8);
+  color: #ff9900;
+  border-top: solid 1px rgba(255, 255, 255, 0.3);
+}
+
+.footer-nav-list div {
+  border-radius: 4px;
+}

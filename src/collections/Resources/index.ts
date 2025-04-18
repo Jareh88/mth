@@ -75,6 +75,25 @@ export const Resources: CollectionConfig<"resources"> = {
       required: true,
     },
     {
+      name: "type",
+      type: "select",
+      required: true,
+      options: [
+        {
+          label: "Article",
+          value: "articles",
+        },
+        {
+          label: "Getting Started",
+          value: "getting-started",
+        },
+        {
+          label: "Common Therapy Topics",
+          value: "common-therapy-topics",
+        },
+      ],
+    },
+    {
       type: "tabs",
       tabs: [
         {

@@ -6,6 +6,7 @@ import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
+import { GlobalStyles, useTheme } from "@mui/material";
 
 // Minimal CSS for read-only
 const contentEditableStyles = {
@@ -33,20 +34,51 @@ export default function LexicalRenderer({ content }: LexicalRendererProps) {
     },
   };
 
+  const theme = useTheme();
+
   return (
-    <LexicalComposer initialConfig={initialConfig}>
-      {/* RichTextPlugin is used so Lexical knows how to render block/inline nodes, links, etc. */}
-      <RichTextPlugin
-        contentEditable={<ContentEditable style={contentEditableStyles} />}
-        placeholder={<div />}
-      />
-      {/* Some optional Lexical plugins for read-only: */}
-      <HistoryPlugin />
-      <OnChangePlugin
-        onChange={() => {
-          /* read-only, do nothing */
+    <>
+      {/* @TODO add rest of styles needed */}
+      <GlobalStyles
+        styles={{
+          h1: {
+            ...theme.typography.h1,
+          },
+          h2: {
+            ...theme.typography.h2,
+          },
+          h3: {
+            ...theme.typography.h3,
+          },
+          h4: {
+            ...theme.typography.h4,
+          },
+          h5: {
+            ...theme.typography.h5,
+          },
+          h6: {
+            ...theme.typography.h6,
+          },
+          p: {
+            ...theme.typography.body1,
+            marginBottom: theme.spacing(4),
+          },
         }}
       />
-    </LexicalComposer>
+      <LexicalComposer initialConfig={initialConfig}>
+        {/* RichTextPlugin is used so Lexical knows how to render block/inline nodes, links, etc. */}
+        <RichTextPlugin
+          contentEditable={<ContentEditable style={contentEditableStyles} />}
+          placeholder={<div />}
+        />
+        {/* Some optional Lexical plugins for read-only: */}
+        <HistoryPlugin />
+        <OnChangePlugin
+          onChange={() => {
+            /* read-only, do nothing */
+          }}
+        />
+      </LexicalComposer>
+    </>
   );
 }

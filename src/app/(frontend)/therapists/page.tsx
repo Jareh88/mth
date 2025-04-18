@@ -4,16 +4,11 @@ import Grid from "@mui/material/Grid2";
 import TherapistCard from "@frontend/_components/TherapistCardComponent";
 import { Container, Typography } from "@mui/material";
 import GetMatchedFilters from "@frontend/_components/GetMatchedFiltersComponent";
-import { cache, Suspense } from "react";
+import { Suspense } from "react";
 import HowToComponent from "@frontend/_components/HowToComponent";
 import SearchQueryEdit from "@frontend/_components/SearchQueryEdit";
 import { getPayloadInstance } from "@frontend/_lib/payload";
-import { Metadata } from "next";
-import { PageArgs } from "../_helpers/types";
 import { generateMeta } from "../_utils/generateMeta";
-import { draftMode } from "next/headers";
-import { getPayload } from "payload";
-import configPromise from "@payload-config";
 
 export default async function Therapists() {
   const payload = await getPayloadInstance();
@@ -98,6 +93,7 @@ export async function generateMetadata() {
       title: "Male Therapists & Counsellors Near You | Men's Therapy Hub",
       description:
         "Get matched to a qualified professional near you. Male therapists and counsellors specialising in men's mental health, couples therapy, and more.",
+      // @TODO sort dynamic seo images
       // image: ,
       slug: "/therapists",
     },

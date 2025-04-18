@@ -68,7 +68,7 @@ export default async function RootLayout({
                   className="background-image"
                 />
               </div>
-              <Box sx={{ position: "relative", zIndex: 1 }}>
+              <Box sx={{ position: "relative", zIndex: 1, minHeight: "100vh" }}>
                 {user && <AdminBar user={user} />}
                 <Header />
                 <StickyHeader />

@@ -634,6 +634,7 @@ export interface User {
 export interface Resource {
   id: number;
   title: string;
+  type: 'articles' | 'getting-started' | 'common-therapy-topics';
   heroImage?: (number | null) | Media;
   content: {
     root: {
@@ -1289,6 +1290,7 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface ResourcesSelect<T extends boolean = true> {
   title?: T;
+  type?: T;
   heroImage?: T;
   content?: T;
   relatedResources?: T;

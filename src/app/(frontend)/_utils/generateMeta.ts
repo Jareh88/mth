@@ -1,19 +1,24 @@
 import type { Metadata } from "next";
 
-import type { Media, Page, Resource, Config } from "../payload-types";
-
 import { mergeOpenGraph } from "./mergeOpenGraph";
 import { getServerSideURL } from "./getURL";
+import { Config, Media, Page, Resource } from "@/payload-types";
 
 const getImageURL = (image?: Media | Config["db"]["defaultIDType"] | null) => {
   const serverUrl = getServerSideURL();
 
-  let url = serverUrl + "/website-template-OG.webp";
+  let url = serverUrl + "/assets/og.svg";
 
-  if (image && typeof image === "object" && "url" in image) {
-    const ogUrl = image.sizes?.og?.url;
-
-    url = ogUrl ? serverUrl + ogUrl : serverUrl + image.url;
+  // @TODO sort out fetching url
+  if (
+    image &&
+    typeof image === "object" &&
+    "url" in image &&
+    typeof image.url === "string"
+  ) {
+    // const ogUrl = image.sizes?.og?.url;
+    // url = ogUrl ? serverUrl + ogUrl : serverUrl + image.url;
+    url = image.url;
   }
 
   return url;
@@ -26,9 +31,7 @@ export const generateMeta = async (args: {
 
   const ogImage = getImageURL(doc?.meta?.image);
 
-  const title = doc?.meta?.title
-    ? doc?.meta?.title + " | Men's Therapy Hub"
-    : "Men's Therapy Hub";
+  const title = doc?.meta?.title ? doc?.meta?.title : "Men's Therapy Hub";
 
   return {
     description: doc?.meta?.description,

@@ -4,6 +4,9 @@ import TherapistProfile from "@frontend/_components/TherapistProfileComponent";
 import Link from "next/link";
 import { getPayloadInstance } from "@frontend/_lib/payload";
 import { notFound } from "next/navigation";
+import { generateMeta } from "../../_utils/generateMeta";
+import { PageArgs } from "../../_lib/pageArgs";
+import { Metadata } from "next";
 
 // 1) Synchronously typed params for Next 15 (not a Promise)
 export async function generateStaticParams() {
@@ -13,6 +16,7 @@ export async function generateStaticParams() {
   const { docs: therapists } = await payload.find({
     collection: "therapists",
     pagination: false,
+    select: { slug: true },
     // Set filter finds here?
   });
 
@@ -66,4 +70,33 @@ export default async function Page({
       <TherapistProfile therapist={therapist} />
     </Container>
   );
+}
+
+export async function generateMetadata({
+  params: paramsPromise,
+}: PageArgs): Promise<Metadata> {
+  const { slug } = await paramsPromise;
+  const payload = await getPayloadInstance();
+
+  const { docs: [therapist] = [] } = await payload.find({
+    collection: "therapists",
+    where: {
+      slug: {
+        equals: slug,
+      },
+    },
+    limit: 1,
+  });
+
+  const page = {
+    meta: {
+      title: `${therapist.name} | Men's Therapy Hub`,
+      description: `Qualified male ${therapist.profession}`,
+      // @TODO sort dynamic seo images
+      // image: ,
+      slug: "/resources",
+    },
+  };
+
+  return generateMeta({ doc: page });
 }
